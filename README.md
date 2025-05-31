@@ -1,0 +1,6 @@
+# XY-Lexicon
+
+## QQ群
+[点击加入QQ群](https://qun.qq.com/universal-share/share?ac=1&authKey=4qJdAEsaa8pcxEnb08bFWWRxwJE5JE1q2%2Fvc1ZEV7db9MulnAq49cgSRLbCR2aVy&busi_data=eyJncm91cENvZGUiOiI2NzIxNDM4MzkiLCJ0b2tlbiI6ImdDeEUrNjFlbGhxRllwY0c4azQ5UVU5RWlHTXhMeWtLazZFSmd2bTR6NGhwRG5tNDk1djBFKzhQKzMxRU0rVG0iLCJ1aW4iOiIxNDgwNDU5MjAxIn0%3D&data=mZyGPMtmE8ubcgDhu6TtTLOcQYGVNOPjIHmJ9dQFTCqs87AyBlfnw8Em1SflPRHqo4lssmK9-rhD_ABHxnxsQA&svctype=4&tempid=h5_group_info)
+
+![QQ群二维码](QQgroup.jpg)
