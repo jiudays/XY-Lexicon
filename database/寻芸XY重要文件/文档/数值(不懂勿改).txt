@@ -1,0 +1,3 @@
+ZGuRRHOXGC/eV+MKS7ygPGcWXr67ni3L74vC60elWC0gDuRN1NrQJ3M+0uXtUTem
+67ad83af-3c5e-49c0-8892-8ed131375bb3
+{"app":"com.tencent.multimsg","config":{"autosize":1,"forward":1,"round":1,"type":"normal","width":300},"desc":"[聊天记录]","extra":"{\"filename\":\"67ad83af-3c5e-49c0-8892-8ed131375bb3\",\"tsum\":25}","meta":{"detail":{"news":[{"text":"三个句号: 这里是特殊公告内容"},{"text":"三个句号: 可添联系3573995540上传真实有效的证据！"},{"text":"三个句号: 真实有效的证据！勿要伪造消息！真实有效的证据！勿要伪造消息！真实有效的证据！勿要伪造消息！真实有效的证据！勿要伪造消息！"},{"text":"三个句号: 若是曝光内容为误会！可再次联系我删除次条案例！"}],"resid":"ZGuRRHOXGC/eV+MKS7ygPGcWXr67ni3L74vC60elWC0gDuRN1NrQJ3M+0uXtUTem","source":"群聊的聊天记录","summary":"查看8条转发消息","uniseq":"67ad83af-3c5e-49c0-8892-8ed131375bb3"}},"prompt":"[聊天记录]","ver":"0.0.0.5","view":"contact"}

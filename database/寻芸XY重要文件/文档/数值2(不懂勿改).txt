@@ -1,0 +1,3 @@
+NVBdl+0W3A3ELxONUI8YkheFg3nb+SVAB7uxERqwaN0Lss8HPUSRP2zBCcWP+p+U
+4e937dc5-f594-44e0-92ad-af1189e3b92c
+{"app":"com.tencent.multimsg","config":{"autosize":1,"forward":1,"round":1,"type":"normal","width":300},"desc":"[聊天记录]","extra":"{\"filename\":\"4e937dc5-f594-44e0-92ad-af1189e3b92c\",\"tsum\":41}","meta":{"detail":{"news":[{"text":"QQ用户: 这里是寻芸作者动态"},{"text":"七彩筱筱: 2025-02-13日动态"},{"text":"七彩筱筱: 2025-02-14日"},{"text":"七彩筱筱: 2025-02-15日"}],"resid":"NVBdl+0W3A3ELxONUI8YkheFg3nb+SVAB7uxERqwaN0Lss8HPUSRP2zBCcWP+p+U","source":"群聊的聊天记录","summary":"查看11条转发消息","uniseq":"4e937dc5-f594-44e0-92ad-af1189e3b92c"}},"prompt":"[聊天记录]","ver":"0.0.0.5","view":"contact"}
