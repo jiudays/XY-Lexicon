@@ -1,0 +1,2611 @@
+[系统消息]词库初始化
+t:%时间yyyy-MM-dd HH:mm:ss%
+$写 词库初始化/全局时间 API接口 %t%$
+$黄色日志 寻芸XY-API接口❂注入中..........$
+$绿色日志 寻芸XY-API接口❂注入成功！$
+
+发送(API接口|api接口|接口包)配置
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:$主人 %QQ%$==0
+返回
+如果尾
+A:$群文件 %群号% 上传 / 寻芸XY-API接口.txt %词库路径%$
+如果:%A%==0
+上传失败！
+返回
+如果尾
+
+(cos|COS)图
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+1:https://free.wqwlkj.cn/wqwlapi/hlxcos.php?type=image
+2:https://api.s01s.cn/API/cos_tp/
+0:%%随机数1-2%%
+$回复 %MsgId%$
+$图片 %0%$
+
+幼态萝莉|大头娃娃
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+1:https://api.s01s.cn/API/ytdm/
+2:http://sbtxqq.com/api/ytdm.php
+0:%%随机数1-2%%
+$图片 %0%$
+
+随机漫图
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.whd.asia/yz/sjmt.php$
+
+mc酱
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://acg.suyanw.cn/mcapi/random.php$
+
+神经表情
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://oiapi.net/API/FunBoxEmoji/$
+
+网易云一言|网易云热评
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$访问 https://acg.suyanw.cn/wyyrp$
+
+绕口令
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+a:$访问 https://api.bi71t5.cn/api/rao.php$
+$回复 %MsgId%$
+标题:@a[data][title]\n
+内容:@a[data][Msg]
+
+疯狂星期四
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$访问 https://api.bi71t5.cn/api/fengkuangxqs.php$
+
+你们看到(他|她|它|ta|TA)了吗([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/cute.php?q=%括号2%$
+
+你们看到(他|她|它|ta|TA)了吗@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/cute.php?q=%AT0%$
+
+透明头像([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/tmtx1.php?q=%括号1%$
+
+透明头像@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/tmtx1.php?q=%AT0%$
+
+单阴影透明头像([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/tmtx.php?q=%括号1%$
+
+单阴影透明头像@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/tmtx.php?q=%AT0%$
+
+([0-9]+)捅([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/ton.php?q=%括号2%&qq=%括号1%$
+
+@.* 捅@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/ton.php?q=%AT1%&qq=%AT0%$
+
+咸鱼([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/face_yu.php?QQ=%括号1%$
+
+咸鱼@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/face_yu.php?QQ=%AT0%$
+
+爬([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/pa.php?q=%括号1%$
+
+爬@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/pa.php?q=%AT0%$
+
+望月@.* ([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/xiansi.php?q=%AT0%&nr=%括号1%$
+
+拽@.* ([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/zhuai.php?q=%AT0%&nr=%括号1%$
+
+丢@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.icofun.cn/api/diu.php?QQ=%AT0%$
+
+丢([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.icofun.cn/api/diu.php?QQ=%括号1%$
+
+可莉吃([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$动图 https://api.bi71t5.cn/api/chi.php?QQ=%括号1%$
+
+可莉吃@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$动图 https://api.bi71t5.cn/api/chi.php?QQ=%AT0%$
+
+遛狗([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/bqbjk/qiangou.php?qq1=%QQ%&qq2=%括号1%$
+
+遛狗@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/bqbjk/qiangou.php?qq1=%QQ%&qq2=%AT0%$
+
+@.* 遛狗@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:%AT0%==0|%AT1%==0
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/bqbjk/qiangou.php?qq1=%AT0%&qq2=%AT1%$
+
+翻译繁体([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:%括号1%==
+$回复 %MsgId%$
+请加上内容
+返回
+如果尾
+$回复 %MsgId%$
+$访问 https://api.bi71t5.cn/api/jfzh.php?text=%括号1%$
+
+教程@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/pao.php?qq=%AT0%$
+
+教程([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/pao.php?qq=%括号1%$
+
+鄙视([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/bishi.php?qq=%括号1%$
+
+鄙视@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/bishi.php?qq=%AT0%$
+
+膜拜([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/face_worship.php?QQ=%括号1%$
+
+膜拜@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/face_worship.php?QQ=%AT0%$
+
+(OPPOa|oppoa|OPPOA|oppoA)5([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$动图 https://api.bi71t5.cn/api/oppoa5.php?QQ=%括号2%$
+
+(OPPOa|oppoa|OPPOA|oppoA)5@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$动图 https://api.bi71t5.cn/api/oppoa5.php?QQ=%AT0%$
+
+(qr|QR)授权查询([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$访问 https://api.tangdouz.com/qcx.php?qq=%括号2%$
+
+看电视([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/looktv.php?q=%括号1%$
+
+高手([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/bqbjk/zhuang.php?qq=%括号1%$
+
+高手@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/bqbjk/zhuang.php?qq=%AT0%$
+
+看电视@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/looktv.php?q=%AT0%$
+
+吃([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/eat.php?q=%括号1%$
+
+吃@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/eat.php?q=%AT0%$
+
+咬([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$动图 https://api.bi71t5.cn/api/face_suck.php?QQ=%括号1%$
+
+咬@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$动图 https://api.bi71t5.cn/api/face_suck.php?QQ=%AT0%$
+
+我老婆([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/wife.php?q=%括号1%$
+
+我老婆@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/wife.php?q=%AT0%$
+
+一样([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/yy.php?q=%括号1%$
+
+圈钱([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/quan.php?q=%括号1%$
+
+一样@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/yy.php?q=%AT0%$
+
+开导([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/dfj.php?QQ=%括号1%$
+
+开导@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/dfj.php?QQ=%AT0%$
+
+圈钱@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.tangdouz.com/wz/quan.php?q=%AT0%$
+
+
+威胁([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/weixie.php?QQ=%括号1%$
+
+动漫警证([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/Policebadge.php?qq=%括号1%$
+
+羡慕([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/xianmu.php?qq=%括号1%$
+
+比心([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/xin.php?qq=%括号1%$
+
+威胁@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/weixie.php?QQ=%AT0%$
+
+动漫警证@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/Policebadge.php?qq=%AT0%$
+
+羡慕@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/xianmu.php?qq=%AT0%$
+
+比心@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/xin.php?qq=%AT0%$
+
+QQ个性资料卡6([\s\S]*) ([0-9]+) ([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/qqcard_8.php?qq=%括号2%&qid=%括号3%&name=%括号1%$
+
+QQ个性资料卡5([\s\S]*) ([0-9]+) ([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/qqcard_4.php?qq=%括号2%&qid=%括号3%&name=%括号1%$
+
+QQ个性资料卡4([\s\S]*) ([\s\S]*) ([0-9]+) ([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/qqcard_3.php?qq=%括号3%&qid=%括号4%&name=%括号1%&msg=%括号2%$
+
+QQ个性资料卡3([\s\S]*) ([\s\S]*) ([\s\S]*) ([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/qqcard_2.php?qq=%括号4%&nick=%括号1%&name=%括号3%&msg=%括号2%$
+
+QQ个性资料卡2([\s\S]*) ([0-9]+) ([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/qqcard_1.php?uin=%括号2%&qid=%括号3%&name=%括号1%$
+
+QQ个性资料卡1([\s\S]*) ([\s\S]*) ([\s\S]*) ([0-9]+) ([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/qqcard.php?uin=%括号4%&qid=%括号5%&name=%括号1%&wa=%括号2%&was=%括号3%$
+
+采访一下([0-9]+) ([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/chusheng.php?qq=%括号1%&bt=%括号2%$
+
+弱智吧问答|随机弱智吧问答
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+a:$访问 https://api.pearktrue.cn/api/ruozhiba/$
+$回复 %MsgId%$
+问题:@a[data][instruction]\n\n
+回复:@a[data][output]
+
+飞机呗([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/fjb.php?qq=%括号1%$
+
+摇可乐([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/yaokele.php?QQ=%括号1%$
+
+诗句摘录
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$访问 https://api.tangdouz.com/a/poetrand.php$
+
+随机古诗
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+A:$访问 http://yueshen.xyz/API/gushi/l.php?m=json$
+$回复 %MsgId%$
+@A[m]
+
+采访一下@.* ([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/chusheng.php?qq=%AT0%&bt=%括号1%$
+
+飞机呗@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/fjb.php?qq=%AT0%$
+
+摇可乐@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.bi71t5.cn/api/yaokele.php?QQ=%AT0%$
+
+淘宝买家秀
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+1:https://api.s01s.cn/API/tbmjx/
+2:https://api.suyanw.cn/api/tbmjx.php
+0:%%随机数1-2%%
+$回复 %MsgId%$
+$图片 %0%$
+
+我要马内([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.xyovo.top/API/yao.php?qq=%括号1%$
+
+我要马内@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.xyovo.top/API/yao.php?qq=%AT0%$
+
+玩([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$动图 http://api.xingchenfu.xyz/API/chi.php?qq=%括号1%$
+//$动图 https://api.317ak.com/API/bqbjk/bqbjson/wan/wan.php?qq=%括号1%$
+
+玩@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.xingchenfu.xyz/API/chi.php?qq=%AT0%$
+//$动图 https://api.317ak.com/API/bqbjk/bqbjson/wan/wan.php?qq=%AT0%$
+
+想([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/bqbjk/bqbjson/xiangkan/xiangkan.php?qq=%括号1%$
+
+想@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/bqbjk/bqbjson/xiangkan/xiangkan.php?qq=%AT0%$
+
+动漫图片
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+1:http://sbtxqq.com/api/dmbz.php
+2:https://api.317ak.com/API/tp/dmtp.php
+3:https://t.alcy.cc/ycy
+0:%%随机数1-3%%
+$回复 %MsgId%$
+$图片 %0%$
+
+(zfb|支付宝)到账语音([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:$字符长度 %括号2%$>20
+$回复 %MsgId%$
+这么多，读🍋
+返回
+如果尾
+s:[%括号2%*1]
+如果:%s%==0
+$回复 %MsgId%$
+0值读🍋
+返回
+如果尾
+如果:%括号2%>999999999999
+$回复 %MsgId%$
+错误
+返回
+如果尾
+$语音 320 http://sbtxqq.com/api/zfb.php?msg=%s%$
+
+搜图([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:$字符长度 %括号1%$>20
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://sbtxqq.com/api/duitang.php?msg=%括号1%&type=image$
+
+(op|OP|原神)图片
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+1:https://api.317ak.com/API/tp/ystp.php
+2:https://sbtxqq.com/api/yscos.php
+3:https://sbtxqq.com/api/ys.php
+4:http://110.40.70.113:25514/API/yuanshen_bz
+0:%%随机数1-4%%
+$回复 %MsgId%$
+$图片 %0%$
+
+(王者|王者荣耀)抽象(图|画)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://sbtxqq.com/api/wzeg.php$
+
+点赞([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/zan.php?QQ=%括号1%$
+
+点赞@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/zan.php?QQ=%AT0%$
+
+撕([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/si.php?QQ=%括号1%$
+
+撕@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/si.php?QQ=%AT0%$
+
+赞([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/zan_1.php?qq=%括号1%$
+
+赞@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/zan_1.php?qq=%AT0%$
+
+需要(它|他|她)([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/face_need.php?QQ=%括号2%$
+
+需要(它|他|她)@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.bi71t5.cn/api/face_need.php?QQ=%AT0%$
+
+黑丝图
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+1:https://api.bi71t5.cn/api/hs.php
+2:https://api.suyanw.cn/api/hs.php
+0:%%随机数1-2%%
+$回复 %MsgId%$
+$图片 %0%$
+
+二次元图
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+1:http://liuxingw.com/api/random/api.php?type=pc
+2:http://liuxingw.com/api/random/api.php?type=wap
+3:https://api.suyanw.cn/api/comic.php
+4:https://api.suyanw.cn/api/comic2.php
+5:https://api.suyanw.cn/api/comic3.php
+k:%%随机数1-5%%
+$回复 %MsgId%$
+$图片 %k%$
+
+神回复
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+a:$访问 http://shanhe.kim/api/za/shenhuifu.php$
+$回复 %MsgId%$
+@a[question]\n
+@a[answer]
+
+离婚证书([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/zsbqjk/zs_32.php?qq=%括号1%$
+
+离婚证书@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/zsbqjk/zs_32.php?qq=%AT0%$
+
+这像画吗@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.icofun.cn/api/hua.php?qq=%AT0%$
+
+这像画吗([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.icofun.cn/api/hua.php?qq=%括号1%$
+
+不要脸证([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/zsbqjk/zs_31.php?qq=%括号1%$
+
+不要脸证@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/zsbqjk/zs_31.php?qq=%AT0%$
+
+(jk|JK|Jk|jK)图
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/tp/jktp.php$
+
+白丝图
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/tp/bstp.php$
+
+纳西妲抱@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/bqbjk/naxidabao.php?qq=%AT0%$
+
+纳西妲抱([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/bqbjk/naxidabao.php?qq=%括号1%$
+
+(点字阵|点阵字)([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:%消息来源%!=群聊消息
+返回
+如果尾
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+a:$访问 https://sbtxqq.com/api/dianzhen.php?name=%括号2%&fill=■&replacement=□$
+$添加消息 A Text %a%$
+$发送消息 A B$
+$休眠 10000$
+$撤回 %B:MsgId%$
+
+布布可乐@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.xingchenfu.xyz/API/bubukele.php?text=%AtName0%$
+
+布布可乐([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.xingchenfu.xyz/API/bubukele.php?text=%括号1%$
+
+(op|OP|原神)语录
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+a:$访问 https://sbtxqq.com/api/ysyl.php$
+$回复 %MsgId%$
+%a%
+
+龙图
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.317ak.com/API/tp/long.php$
+
+悲报([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 http://api.xingchenfu.xyz/API/beibao.php?msg=%括号1%$
+
+再催(就|)跑路@.*
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.s01s.cn/API/yqwlsh/3.php/?qq=%AT0%$
+
+再催(就|)跑路([0-9]+)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+$图片 https://api.s01s.cn/API/yqwlsh/3.php/?qq=%括号2%$
+
+(芸|Y|y)(芸|Y|y)(最|Z|z)(好|H|h)(看|K|k)
+如果:%消息来源%!=群聊消息
+返回
+如果尾
+1:%随机数1-100%
+$群聊表情回应 %群号% %MsgId% %1%$
+
+接口功能|API接口
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+氮:$读 菜单栏样式/菜单栏/记录.txt x ❂☐☐☐☐☐寻芸-XY☐☐☐☐☐❂$
+%氮%\n
+发送以下指令可单独发送接口列表\n
+接口功能1 接口功能2 接口功能3\n
+接口功能4\n
+%氮%
+F:%临时画布%
+$画布 A 创建 3690 3500 FFFFFFFF$
+//                        1横向，2竖向 默认3944*2000
+$画布 A 字体 %引擎目录%database/寻芸XY重要文件/字体区/字体3.ttf$
+拒:90
+高:0
+i:0
+a:["【表情包区】","吃[QQ号]","咬[QQ号]","丢[QQ号]","爬[QQ号]","撕[QQ号]","赞[QQ号]","玩[QQ号]","想[QQ号]","高手[QQ号]","威胁[QQ号]","羡慕[QQ号]","比心[QQ号]","点赞[QQ号]","想看[QQ号]","鄙视[QQ号]","咸鱼[QQ号]","遛狗[QQ号]","圈钱[QQ号]","一样[QQ号]","开导[QQ号]","膜拜[QQ号]","悲报[内容]","可莉吃[QQ号]","我老婆[QQ号]","摇可乐[QQ号]","飞机呗[QQ号]","看电视[QQ号]","需要它[QQ号]","OPPOa5[QQ号]","纳西妲抱[QQ号]","动漫警证[QQ号]","离婚证书[QQ号]","这像画吗[QQ号]","不要脸证[QQ号]","[QQ号]捅[QQ号]","布布可乐[内容]","你们看到他了吗[QQ号]","采访一下[QQ号][空格][内容]"]
+数:$JSON 长度 a$
+:cc
+如果:%i%>%数%
+高:[%高%*0]
+i:[%i%*0]
+$标签跳转 jj$
+返回
+如果尾
+内:$JSON 获取 a %i% 你妈$
+如果:%内%==你妈
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+$画布 A 文字 100 FF%随机数100000-999999% 50 %高% %内%$
+i:[%i%+1]
+高:[%高%+%拒%]
+$标签跳转 cc$
+返回
+如果尾
+:jj
+b:["【文本区】","绕口令","神回复","诗句摘录","随机古诗","弱智吧问答","网易云热评","疯狂星期四","支付宝到账语音+数字","----------","【壁纸区】","单阴影透明头像[QQ号]","透明头像[QQ号]","王者抽象画","淘宝买家秀","动漫图片","神经表情","op图片","mc酱","黑丝图","白丝图","cos图","JK图","龙图","----------","【个性签名卡片】","QQ个性资料卡1[内容1] [内容2] [内容3] [QQ号] [ID]","QQ个性资料卡2[内容1] [QQ号] [ID]","QQ个性资料卡3[内容1] [内容2] [内容3] [QQ号]","QQ个性资料卡4[内容1] [内容2] [QQ号] [ID]","QQ个性资料卡5[内容1] [QQ号] [ID]","QQ个性资料卡6[内容1] [QQ号] [ID]"]
+书:$JSON 长度 b$
+如果:%i%>%书%
+$画布 A 保存 %F%$
+$图片 %F%$
+！！！严重警告！！！\n请勿要相信接口所反还的内容\n看清现实，莫要迷信\n本次更新删除了大量接口，部分内容已删除但可能没有在列表内删除\n\n接口内部分可直接@代替输入QQ
+返回
+如果尾
+内:$JSON 获取 b %i% 你妈$
+如果:%内%==你妈
+i:[%i%+1]
+$标签跳转 jj$
+返回
+如果尾
+$画布 A 文字 100 FF%随机数100000-999999% 1000 %高% %内%$
+i:[%i%+1]
+高:[%高%+%拒%]
+$标签跳转 jj$
+返回
+如果尾
+
+[内部]❂
+1:[]
+$JSON 添加 1 【表情包区】$
+$JSON 添加 1 吃[QQ号]$
+$JSON 添加 1 咬[QQ号]$
+$JSON 添加 1 丢[QQ号]$
+$JSON 添加 1 爬[QQ号]$
+$JSON 添加 1 撕[QQ号]$
+$JSON 添加 1 赞[QQ号]$
+$JSON 添加 1 玩[QQ号]$
+$JSON 添加 1 想[QQ号]$
+$JSON 添加 1 高手[QQ号]$
+$JSON 添加 1 威胁[QQ号]$
+$JSON 添加 1 羡慕[QQ号]$
+$JSON 添加 1 比心[QQ号]$
+$JSON 添加 1 点赞[QQ号]$
+$JSON 添加 1 想看[QQ号]$
+$JSON 添加 1 鄙视[QQ号]$
+$JSON 添加 1 咸鱼[QQ号]$
+$JSON 添加 1 遛狗[QQ号]$
+$JSON 添加 1 圈钱[QQ号]$
+$JSON 添加 1 一样[QQ号]$
+$JSON 添加 1 开导[QQ号]$
+$JSON 添加 1 膜拜[QQ号]$
+$JSON 添加 1 悲报[内容]$
+$JSON 添加 1 可莉吃[QQ号]$
+$JSON 添加 1 我老婆[QQ号]$
+$JSON 添加 1 摇可乐[QQ号]$
+$JSON 添加 1 飞机呗[QQ号]$
+$JSON 添加 1 看电视[QQ号]$
+$JSON 添加 1 需要它[QQ号]$
+$JSON 添加 1 OPPOa5[QQ号]$
+$JSON 添加 1 纳西妲抱[QQ号]$
+$JSON 添加 1 动漫警证[QQ号]$
+$JSON 添加 1 离婚证书[QQ号]$
+$JSON 添加 1 这像画吗[QQ号]$
+$JSON 添加 1 不要脸证[QQ号]$
+$JSON 添加 1 [QQ号]捅[QQ号]$
+$JSON 添加 1 布布可乐[内容]$
+$JSON 添加 1 拽[@别人] [内容]$
+$JSON 添加 1 望月[@别人] [内容]$
+$JSON 添加 1 你们看到他了吗[QQ号]$
+$JSON 添加 1 采访一下[QQ号][空格][内容]$
+%1%
+
+[内部]❂❂
+1:[]
+$JSON 添加 1 【文本区】$
+$JSON 添加 1 绕口令$
+$JSON 添加 1 神回复$
+$JSON 添加 1 诗句摘录$
+$JSON 添加 1 随机古诗$
+$JSON 添加 1 弱智吧问答$
+$JSON 添加 1 网易云热评$
+$JSON 添加 1 疯狂星期四$
+$JSON 添加 1 支付宝到账语音+数字$
+$JSON 添加 1 ----------$
+$JSON 添加 1 【壁纸区】$
+$JSON 添加 1 单阴影透明头像[QQ号]$
+$JSON 添加 1 透明头像[QQ号]$
+$JSON 添加 1 王者抽象画$
+$JSON 添加 1 淘宝买家秀$
+$JSON 添加 1 动漫图片$
+$JSON 添加 1 神经表情$
+$JSON 添加 1 op图片$
+$JSON 添加 1 mc酱$
+$JSON 添加 1 黑丝图$
+$JSON 添加 1 白丝图$
+$JSON 添加 1 cos图$
+$JSON 添加 1 JK图$
+$JSON 添加 1 龙图$
+$JSON 添加 1 ----------$
+①:QQ个性资料卡1[内容1] [内容2] [内容3] [QQ号] [ID]
+②:QQ个性资料卡2[内容1] [QQ号] [ID]
+③:QQ个性资料卡3[内容1] [内容2] [内容3] [QQ号]
+④:QQ个性资料卡4[内容1] [内容2] [QQ号] [ID]
+⑤:QQ个性资料卡5[内容1] [QQ号] [ID]
+⑥:QQ个性资料卡6[内容1] [QQ号] [ID]
+$JSON 添加 1 【个性签名卡片】$
+$JSON 添加 1 %①%$
+$JSON 添加 1 %②%$
+$JSON 添加 1 %③%$
+$JSON 添加 1 %④%$
+$JSON 添加 1 %⑤%$
+$JSON 添加 1 %⑥%$
+%1%
+
+
+接口功能1
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$调用 接口功能ui1$
+
+接口功能2
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$调用 接口功能ui2$
+
+接口功能3
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$调用 接口功能ui3$
+
+接口功能4
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$调用 额外内容$
+
+
+[内部]接口功能ui1
+氮:$读 菜单栏样式/菜单栏/记录.txt x ❂☐☐☐☐☐寻芸-XY☐☐☐☐☐❂$
+$回复 %MsgId%$
+%氮%\n
+壁纸区:\n
+单阴影透明头像[QQ号]\n
+透明头像[QQ号]\n
+王者抽象画\n
+淘宝买家秀\n
+动漫图片\n
+神经表情\n
+op图片\n
+mc酱\n
+黑丝图\n
+白丝图\n
+cos图\n
+JK图\n
+龙图\n
+%氮%
+
+[内部]接口功能ui2
+氮:$读 菜单栏样式/菜单栏/记录.txt x ❂☐☐☐☐☐寻芸-XY☐☐☐☐☐❂$
+$回复 %MsgId%$
+%氮%\n
+表情包区:\n
+吃[QQ号]\n
+咬[QQ号]\n
+丢[QQ号]\n
+爬[QQ号]\n
+撕[QQ号]\n
+赞[QQ号]\n
+玩[QQ号]\n
+想[QQ号]\n
+高手[QQ号]\n
+威胁[QQ号]\n
+羡慕[QQ号]\n
+比心[QQ号]\n
+点赞[QQ号]\n
+想看[QQ号]\n
+鄙视[QQ号]\n
+咸鱼[QQ号]\n
+遛狗[QQ号]\n
+圈钱[QQ号]\n
+一样[QQ号]\n
+开导[QQ号]\n
+膜拜[QQ号]\n
+悲报[内容]\n
+可莉吃[QQ号]\n
+我老婆[QQ号]\n
+摇可乐[QQ号]\n
+飞机呗[QQ号]\n
+看电视[QQ号]\n
+需要它[QQ号]\n
+OPPOa5[QQ号]\n
+纳西妲抱[QQ号]\n
+动漫警证[QQ号]\n
+离婚证书[QQ号]\n
+这像画吗[QQ号]\n
+不要脸证[QQ号]\n
+[QQ号]捅[QQ号]\n
+布布可乐[内容]\n
+拽[@别人] [内容]\n
+望月[@别人] [内容]\n
+你们看到他了吗[QQ号]\n
+采访一下[QQ号][空格][内容]\n
+%氮%
+
+[内部]接口功能ui3
+氮:$读 菜单栏样式/菜单栏/记录.txt x ❂☐☐☐☐☐寻芸-XY☐☐☐☐☐❂$
+$回复 %MsgId%$
+%氮%\n
+！！！严重警告！！！\n
+请勿要深入相信API返回的内容\n
+文本区:\n
+绕口令\n
+神回复\n
+诗句摘录\n
+随机古诗\n
+弱智吧问答\n
+网易云热评\n
+疯狂星期四\n
+支付宝到账语音+数字\n
+%氮%
+
+
+[内部]额外内容
+氮:$读 菜单栏样式/菜单栏/记录.txt x ❂☐☐☐☐☐寻芸-XY☐☐☐☐☐❂$
+$回复 %MsgId%$
+%氮%\n
+QQ个性资料卡1:\n
+指令:\n
+QQ个性资料卡1[内容1] [内容2] [内容3] [QQ号] [ID]\n
+$图片 http://api.bi71t5.cn/api/qqcard.php?uin=864264375&qid=这里是ID&name=内容1&wa=内容2&was=内容3$\n
+\n
+QQ个性资料卡2:\n
+指令:\n
+QQ个性资料卡2[内容1] [QQ号] [ID]\n
+$图片 http://api.bi71t5.cn/api/qqcard_1.php?uin=864264375&qid=1314&name=内容1$\n
+\n
+QQ个性资料卡3:\n
+指令:\n
+QQ个性资料卡3[内容1] [内容2] [内容3] [QQ号]\n
+$图片 http://api.bi71t5.cn/api/qqcard_2.php?qq=864264375&nick=内容1&name=内容3&msg=内容2$\n
+\n
+QQ个性资料卡4:\n
+指令:\n
+QQ个性资料卡4[内容1] [内容2] [QQ号] [ID]\n
+$图片 http://api.bi71t5.cn/api/qqcard_3.php?qq=864264375&qid=1314&name=内容1&msg=内容2$\n
+\n
+QQ个性资料卡5:\n
+指令:\n
+QQ个性资料卡5[内容1] [QQ号] [ID]\n
+$图片 http://api.bi71t5.cn/api/qqcard_4.php?qq=864264375&qid=1314&name=内容1$\n
+\n
+QQ个性资料卡6:\n
+指令:\n
+QQ个性资料卡6[内容1] [QQ号] [ID]\n
+$图片 http://api.bi71t5.cn/api/qqcard_8.php?qq=864264375&qid=1314&name=内容1$\n
+\n
+%氮%
+
+
+
+
+
+
+
+
+
+
+测试API接口
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:$主人 %QQ%$==0
+返回
+如果尾
+正在调用94条接口....
+$发送$
+预计耗时2分钟........
+$发送$
+3秒后开始执行，发送消息60秒后自动撤回
+$发送$
+$休眠 3000$
+数:$读 API接口/检测 %MsgId% 0$
+i:0
+:cc
+如果:%i%>=94
+返回
+如果尾
+$调用 API检测❂%i%$
+i:[%i%+1]
+$休眠 500$
+$标签跳转 cc$
+
+[内部]API检测❂0
+$写 API接口/检测 %MsgId% 0$
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:cos图$
+$添加消息 A Img https://api.s01s.cn/API/cos_tp/$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂1
+$写 API接口/检测 %MsgId% 1$
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:幼态萝莉1$
+$添加消息 A Img https://api.s01s.cn/API/ytdm/$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂2
+$写 API接口/检测 %MsgId% 2$
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:cos2$
+$添加消息 A Img https://free.wqwlkj.cn/wqwlapi/hlxcos.php?type=image$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:$
+$添加消息 A Img $
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂3
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:幼态萝莉2$
+$添加消息 A Img http://sbtxqq.com/api/ytdm.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂4
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:布布可乐$
+$添加消息 A Img http://api.xingchenfu.xyz/API/bubukele.php?text=名字$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂5
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:mc酱$
+$添加消息 A Img https://acg.suyanw.cn/mcapi/random.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂6
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:神经表情$
+$添加消息 A Img https://oiapi.net/API/FunBoxEmoji/$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂7
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:网易云一言\r$
+a:$访问 https://acg.suyanw.cn/wyyrp$
+$添加消息 A Text %a%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂8
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:绕口令\r\r$
+a:$访问 https://api.bi71t5.cn/api/rao.php$
+$添加消息 A Text 标题:@a[data][title]\r内容:@a[data][Msg]$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂9
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:疯狂星期四$
+a:$访问 https://api.bi71t5.cn/api/fengkuangxqs.php$
+$添加消息 A Text \r%a%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂10
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:你们看到他了吗$
+$添加消息 A Img https://api.tangdouz.com/wz/cute.php?q=864264375$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂11
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:透明头像$
+$添加消息 A Img https://api.tangdouz.com/wz/tmtx1.php?q=864264375$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂12
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:单阴影透明头像$
+$添加消息 A Img https://api.tangdouz.com/wz/tmtx.php?q=864264375$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂13
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:捅$
+$添加消息 A Img https://api.tangdouz.com/wz/ton.php?q=%QQ%&qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂14
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:闲鱼$
+$添加消息 A Img https://api.bi71t5.cn/api/face_yu.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂15
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:爬$
+$添加消息 A Img https://api.tangdouz.com/wz/pa.php?q=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂16
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:望月$
+$添加消息 A Img https://api.tangdouz.com/wz/xiansi.php?q=%QQ%&nr=不处$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂17
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:拽$
+$添加消息 A Img https://api.tangdouz.com/wz/zhuai.php?q=%QQ%&nr=你干嘛！$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂18
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:悲报$
+$添加消息 A Img http://api.xingchenfu.xyz/API/beibao.php?msg=跑路了$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂19
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:空$
+//$添加消息 A Img $
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂20
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:空$
+//$添加消息 A Img $
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂21
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:可莉吃$
+$添加消息 A Img https://api.bi71t5.cn/api/chi.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂22
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:这像画吗$
+$添加消息 A Img http://api.icofun.cn/api/hua.php?qq=864264375$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂23
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:遛狗$
+$添加消息 A Img https://api.317ak.com/API/bqbjk/qiangou.php?qq1=%QQ%&qq2=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂24
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:教程$
+$添加消息 A Img https://api.bi71t5.cn/api/pao.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂25
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:鄙视$
+$添加消息 A Img https://api.bi71t5.cn/api/bishi.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂26
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:膜拜$
+$添加消息 A Img https://api.bi71t5.cn/api/face_worship.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂27
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:OPPOa5$
+$添加消息 A Img https://api.bi71t5.cn/api/oppoa5.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂28
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:Qr授权查询\r$
+r:$访问 https://api.tangdouz.com/qcx.php?qq=%QQ%$
+$添加消息 A Text %r%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂29
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:看电视$
+$添加消息 A Img https://api.tangdouz.com/wz/looktv.php?q=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂30
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:高手$
+$添加消息 A Img https://api.317ak.com/API/bqbjk/zhuang.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂31
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:吃$
+$添加消息 A Img https://api.tangdouz.com/wz/eat.php?q=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂32
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:咬$
+$添加消息 A Img https://api.bi71t5.cn/api/face_suck.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂33
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:我老婆$
+$添加消息 A Img https://api.tangdouz.com/wz/wife.php?q=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂34
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:一样$
+$添加消息 A Img https://api.tangdouz.com/wz/yy.php?q=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂35
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:圈钱$
+$添加消息 A Img https://api.tangdouz.com/wz/quan.php?q=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂36
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:开导$
+$添加消息 A Img https://api.bi71t5.cn/api/dfj.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂37
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:威胁$
+$添加消息 A Img http://api.bi71t5.cn/api/weixie.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂38
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:动漫警证$
+$添加消息 A Img http://api.bi71t5.cn/api/Policebadge.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂39
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:羡慕$
+$添加消息 A Img http://api.bi71t5.cn/api/xianmu.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂40
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:比心$
+$添加消息 A Img http://api.bi71t5.cn/api/xin.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂41
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:资料卡6$
+$添加消息 A Img http://api.bi71t5.cn/api/qqcard_8.php?qq=%QQ%&qid=1314&name=%昵称%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂42
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:资料卡5$
+$添加消息 A Img http://api.bi71t5.cn/api/qqcard_4.php?qq=%QQ%&qid=1314&name=%昵称%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂43
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:资料卡4$
+$添加消息 A Img http://api.bi71t5.cn/api/qqcard_3.php?qq=%QQ%&qid=1314&name=%昵称%&msg=不处$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂44
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:资料卡3$
+$添加消息 A Img http://api.bi71t5.cn/api/qqcard_2.php?qq=%QQ%&nick=不处&name=%昵称%&msg=月吗$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂45
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:资料卡2$
+$添加消息 A Img http://api.bi71t5.cn/api/qqcard_1.php?uin=1314&qid=10086&name=%昵称%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂46
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:资料卡1$
+$添加消息 A Img http://api.bi71t5.cn/api/qqcard.php?uin=%QQ%&qid=114514&name=%昵称%&wa=bus&was=nnnn$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂47
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:采访一下$
+$添加消息 A Img http://api.bi71t5.cn/api/chusheng.php?qq=%QQ%&bt=月吗$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂48
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:弱智吧问答$
+a:$访问 https://api.pearktrue.cn/api/ruozhiba/$
+$添加消息 A Text \r问题:@a[data][instruction]\r\r回复:@a[data][output]$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂49
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:飞机呗$
+$添加消息 A Img http://api.bi71t5.cn/api/fjb.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂50
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:摇可乐$
+$添加消息 A Img http://api.bi71t5.cn/api/yaokele.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂51
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:诗句摘录$
+a:$访问 https://api.tangdouz.com/a/poetrand.php$
+$添加消息 A Text \r%a%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂52
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:淘宝买家秀$
+$添加消息 A Img https://api.s01s.cn/API/tbmjx/$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂53
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:我要马内$
+$添加消息 A Img http://api.xyovo.top/API/yao.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂54
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:玩$
+//$添加消息 A Img https://api.317ak.com/API/bqbjk/bqbjson/wan/wan.php?qq=%QQ%$
+$添加消息 A Img http://api.xingchenfu.xyz/API/chi.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂55
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:想$
+$添加消息 A Img https://api.317ak.com/API/bqbjk/bqbjson/xiangkan/xiangkan.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂56
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:动漫图片1$
+$添加消息 A Img http://sbtxqq.com/api/dmbz.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂57
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:动漫图片2$
+$添加消息 A Img https://api.317ak.com/API/tp/dmtp.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂58
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:搜图$
+$添加消息 A Img http://sbtxqq.com/api/duitang.php?msg=可爱&type=image$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂59
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:OP图片1$
+$添加消息 A Img https://api.317ak.com/API/tp/ystp.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂60
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:王者荣耀抽象画$
+$添加消息 A Img http://sbtxqq.com/api/wzeg.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂61
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:点赞$
+$添加消息 A Img https://api.bi71t5.cn/api/zan.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂62
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:撕$
+$添加消息 A Img https://api.bi71t5.cn/api/si.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂63
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:赞$
+$添加消息 A Img https://api.bi71t5.cn/api/zan_1.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂64
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:需要它$
+$添加消息 A Img https://api.bi71t5.cn/api/face_need.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂65
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:黑丝图$
+$添加消息 A Img https://api.bi71t5.cn/api/hs.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂66
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:空$
+//$添加消息 A Img $
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂67
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:空$
+//$添加消息 A Img $
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂68
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:二次元图1$
+$添加消息 A Img http://liuxingw.com/api/random/api.php?type=pc$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂69
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:二次元图2$
+$添加消息 A Img http://liuxingw.com/api/random/api.php?type=wap$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂70
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:星座运势$
+$添加消息 A Img https://xiaoapi.cn/API/xzys_pic.php?msg=射手$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂71
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:神回复$
+a:$访问 http://shanhe.kim/api/za/shenhuifu.php$
+$添加消息 A Text \r@a[question]\r@a[answer]$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂72
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:离婚证书$
+$添加消息 A Img https://api.317ak.com/API/zsbqjk/zs_32.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂73
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:不要脸证$
+$添加消息 A Img https://api.317ak.com/API/zsbqjk/zs_31.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂74
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:jk图$
+$添加消息 A Img https://api.317ak.com/API/tp/jktp.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂75
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:白丝图$
+$添加消息 A Img https://api.317ak.com/API/tp/bstp.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂76
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:特殊名称:\r$
+a:$访问 https://api.tangdouz.com/a/tsname.php?name=筱筱&wb=喵&f=1$
+$添加消息 A Text %a%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂77
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:我的头像$
+$添加消息 A Img https://q4.qlogo.cn/g?b=qq&nk=%QQ%&s=5$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂78
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:随机头像框$
+$添加消息 A Img https://api.lolimi.cn/API/head/api.php?QQ=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂79
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:黑子$
+$添加消息 A Img https://api.317ak.com/API/tp/kun.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂80
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:丢$
+$添加消息 A Img http://api.icofun.cn/api/diu.php?QQ=864264375$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂81
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂82
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:黑丝图2$
+$添加消息 A Img https://api.suyanw.cn/api/hs.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂83
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:二次元图3$
+$添加消息 A Img https://api.suyanw.cn/api/comic.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂84
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:二次元图4$
+$添加消息 A Img https://api.suyanw.cn/api/comic2.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂85
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:二次元图5$
+$添加消息 A Img https://api.suyanw.cn/api/comic3.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂86
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:淘宝买家秀2$
+$添加消息 A Img https://api.suyanw.cn/api/tbmjx.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂87
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:OP图片4$
+$添加消息 A Img http://110.40.70.113:25514/API/yuanshen_bz$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂88
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:动漫图片3$
+$添加消息 A Img https://t.alcy.cc/ycy$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂89
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:OP图片2$
+$添加消息 A Img https://sbtxqq.com/api/yscos.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂90
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:OP语录$
+a:$访问 https://sbtxqq.com/api/ysyl.php$
+$添加消息 A Text \r%a%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂91
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:OP图片3$
+$添加消息 A Img https://sbtxqq.com/api/ys.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂92
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:点阵字$
+a:$访问 https://sbtxqq.com/api/dianzhen.php?name=点阵字&fill=■&replacement=□$
+$添加消息 A Text \r%a%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂93
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:龙图$
+$添加消息 A Img https://api.317ak.com/API/tp/long.php$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
+[内部]API检测❂94
+$新建消息 A$
+$添加消息 A Group$
+$添加消息 A GroupId %群号%$
+$添加消息 A Text 接口:纳西妲抱$
+$添加消息 A Img https://api.317ak.com/API/bqbjk/naxidabao.php?qq=%QQ%$
+$发送消息 A B$
+$休眠 60000$
+$撤回 %B:MsgId%$
+
