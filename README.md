@@ -8,5 +8,5 @@
 
 |日期|版本|链接|
 |:--:|:--:|:--:|
-|2025-06-24|无|Link[https://github.com/jiudays/XY-Lexicon/tree/main/UpdateLog/20250624.md]|
+|2025-06-24|无|[Link](https://github.com/jiudays/XY-Lexicon/tree/main/UpdateLog/20250624.md)|
 
