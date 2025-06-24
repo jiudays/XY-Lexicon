@@ -1,0 +1,9 @@
+听说你的世界一直在下雨？有的兄弟有的这样的神秘操作还不止一种
+晴天:/weather clear
+雨天:/weather rain
+雷暴:/weather thunder
+日出:/time set sunrise
+白日:/time set day
+中午:/time set noon
+日落/time set sunset
+夜晚:/time set night
