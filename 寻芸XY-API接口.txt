@@ -1250,8 +1250,11 @@ $回复 %MsgId%$
 如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
 返回
 如果尾
+1:https://api.yujn.cn/api/long.php?type=image
+2:https://api.317ak.com/API/tp/long.php
+0:%%随机数1-2%%
 $回复 %MsgId%$
-$图片 https://api.317ak.com/API/tp/long.php$
+$图片 %0%$
 
 悲报([\s\S]*)
 如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
@@ -1847,8 +1850,8 @@ $撤回 %B:MsgId%$
 $新建消息 A$
 $添加消息 A Group$
 $添加消息 A GroupId %群号%$
-$添加消息 A Text 接口:空$
-//$添加消息 A Img $
+$添加消息 A Text 接口:龙图2$
+$添加消息 A Img https://api.yujn.cn/api/long.php?type=image$
 $发送消息 A B$
 $休眠 60000$
 $撤回 %B:MsgId%$

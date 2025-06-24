@@ -488,7 +488,7 @@ card_all:
 <title size="26" color="#777777" maxLines="2" lineSpace="12">mtimk：[图片]</title>
 <title size="26" color="#777777" maxLines="2" lineSpace="12">芸熙：不是，这东西能发吗？[斜眼笑]</title>
 <hr hidden="false" style="0" />
-<summary size="26" color="#777777">当前寻芸版本为：4.2.9</summary>
+<summary size="26" color="#777777">当前寻芸版本为：4.3</summary>
 </item><source name="聊天记录" icon="" action="" appid="-1" />
 </msg>
 
@@ -512,7 +512,7 @@ card_all:
 <title size="26" color="#777777" maxLines="2" lineSpace="12">mtimk：[图片]</title>
 <title size="26" color="#777777" maxLines="2" lineSpace="12">芸熙：不是，这东西能发吗？[斜眼笑]</title>
 <hr hidden="false" style="0" />
-<summary size="26" color="#777777">当前寻芸版本为：4.2.9</summary>
+<summary size="26" color="#777777">当前寻芸版本为：4.3</summary>
 </item><source name="聊天记录" icon="" action="" appid="-1" />
 </msg>
 
@@ -584,7 +584,7 @@ card_all:
 <title size="26" color="#777777" maxLines="2" lineSpace="12">mtimk：[图片]</title>
 <title size="26" color="#777777" maxLines="2" lineSpace="12">芸熙：不是，这东西能发吗？[斜眼笑]</title>
 <hr hidden="false" style="0" />
-<summary size="26" color="#777777">当前寻芸版本为：4.2.9</summary>
+<summary size="26" color="#777777">当前寻芸版本为：4.3</summary>
 </item><source name="聊天记录" icon="" action="" appid="-1" />
 </msg>
 
@@ -664,7 +664,7 @@ card_all:
 <title size="26" color="#777777" maxLines="2" lineSpace="12">mtimk：[图片]</title>
 <title size="26" color="#777777" maxLines="2" lineSpace="12">芸熙：不是，这东西能发吗？[斜眼笑]</title>
 <hr hidden="false" style="0" />
-<summary size="26" color="#777777">当前寻芸版本为：4.2.9</summary>
+<summary size="26" color="#777777">当前寻芸版本为：4.3</summary>
 </item><source name="聊天记录" icon="" action="" appid="-1" />
 </msg>
 
@@ -744,7 +744,7 @@ card_all:
 <title size="26" color="#777777" maxLines="2" lineSpace="12">mtimk：[图片]</title>
 <title size="26" color="#777777" maxLines="2" lineSpace="12">芸熙：不是，这东西能发吗？[斜眼笑]</title>
 <hr hidden="false" style="0" />
-<summary size="26" color="#777777">当前寻芸版本为：4.2.9</summary>
+<summary size="26" color="#777777">当前寻芸版本为：4.3</summary>
 </item><source name="聊天记录" icon="" action="" appid="-1" />
 </msg>
 

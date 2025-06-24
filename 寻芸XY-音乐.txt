@@ -4,7 +4,7 @@
 //寻芸习惯：开源免费
 //若词库出现问题了可添加群聊1001671961进行反馈！
 //禁止🚫将本词库加密倒卖！
-//1.6版本
+//1.7版本
 
 [系统消息]词库初始化
 t:%时间yyyy-MM-dd HH:mm:ss%
@@ -36,6 +36,34 @@ A:$群文件 %群号% 上传 / 寻芸XY-音乐.txt %词库路径%$
 返回
 如果尾
 
+@.* (音乐功能|我的收藏|修复歌单|确定清空歌单)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:%AT0%!=%登录账号%
+返回
+如果尾
+$调用 %括号1%$
+返回
+如果尾
+
+@.* 取消收藏 [0-9]+
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:%AT0%!=%登录账号%
+返回
+如果尾
+$调用 取消收藏%参数3%$
+返回
+如果尾
+
 发送个人收藏文件|发送我的收藏文件
 如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
 返回
@@ -61,7 +89,7 @@ $JSON 添加 m %内%$
 $JSON 添加 m %个%$
 //M:$替换 @ %m%@","@$
 U:https://api.s01s.cn/API/lt_zf/
-P:{"zf":%m%,"ms":"合并发送-视频菜单","yh":["寻芸","3573995540"],"type":"text"}
+P:{"zf":%m%,"ms":"合并发送-音乐收藏","yh":["寻芸","3573995540"],"type":"text"}
 A:$访问 POST %U% %P%$
 如果:@A[app]==com.tencent.multimsg
 json:
@@ -81,7 +109,7 @@ json:
 $回复 %MsgId%$
 ❂：点歌+歌名\n
 ❂：切换音源QQ/汽水/喜马拉雅/酷我/网易云/咪咕/酷狗\n
-❂：选歌+序号\n
+❂：选歌/语音/下载+序号\n
 ❂：收藏/取消收藏+序号\n
 ❂：我的歌单/清空歌单\n
 ❂：(偷取|复制)歌单@人\n
@@ -89,12 +117,13 @@ $回复 %MsgId%$
 ❂：切换(图片|文本)音乐菜单\n
 ❂：音乐公告\n
 ❂：发送个人收藏文件\n
-❂：当前音乐词库版本:1.6
+❂：修复歌单|全部取消收藏+音源\n
+❂：当前音乐词库版本:1.7
 返回
 如果尾
 1:-点歌+歌名
 2:-切换音源QQ/汽水/喜马拉雅/酷我/网易云/咪咕/酷狗
-3:-选歌+序号
+3:-选歌/语音/下载+序号
 4:-收藏/取消收藏+序号
 5:-我的歌单/清空歌单
 6:-(偷取|复制)歌单@人
@@ -104,12 +133,13 @@ $回复 %MsgId%$
 ①:-本词库为开源免费词库，禁止倒卖！
 ②:-音乐公告
 ③:-发送个人收藏文件
-④:-当前音乐词库版本:1.6
+④:修复歌单|全部取消收藏+音源
+⑤:-当前音乐词库版本:1.7
 D:60
 Z:20
 $回复 %MsgId%$
 F:%临时画布%
-$画布 A 创建 1500 1320 FFFFFFFF$
+$画布 A 创建 1500 1420 FFFFFFFF$
 $画布 A 字体 %引擎目录%database/寻芸XY重要文件/字体区/字体3.ttf$
 $画布 A 文字 %D% FF%随机数100000-999999% %Z% 0 %1%$
 $画布 A 文字 %D% FF%随机数100000-999999% %Z% 100 %2%$
@@ -124,6 +154,7 @@ $画布 A 文字 %D% FF%随机数100000-999999% %Z% 900 %①%$
 $画布 A 文字 %D% FF%随机数100000-999999% %Z% 1000 %②%$
 $画布 A 文字 %D% FF%随机数100000-999999% %Z% 1100 %③%$
 $画布 A 文字 %D% FF%随机数100000-999999% %Z% 1200 %④%$
+$画布 A 文字 %D% FF%随机数100000-999999% %Z% 1300 %⑤%$
 $画布 A 保存 %F%$
 $图片 %F%$
 
@@ -265,66 +296,6 @@ $调用 歌单回复❂酷狗$
 如果尾
 错误
 
-//点歌([\s\S]*)
-如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
-返回
-如果尾
-如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
-返回
-如果尾
-$写 寻芸XY/直接点歌歌名 %QQ% %括号1%$
-畔:$读 寻芸XY/音乐 %QQ% QQ$
-如果:%畔%==QQ
-$调用 直接性点歌❂QQ$
-返回
-如果尾
-如果:%畔%==汽水
-$调用 直接性点歌❂汽水$
-返回
-如果尾
-如果:%畔%==喜马拉雅
-$调用 直接性点歌❂喜马拉雅$
-返回
-如果尾
-如果:%畔%==酷我
-$调用 直接性点歌❂酷我$
-返回
-如果尾
-如果:%畔%==网易云
-$调用 直接性点歌❂网易云$
-
-//(QQ|汽水|喜马拉雅|酷我|网易云)点歌([\s\S]*)
-如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
-返回
-如果尾
-如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
-返回
-如果尾
-$写 寻芸XY/直接点歌歌名 %QQ% %括号2%$
-如果:%括号1%==QQ
-$写 寻芸XY/音乐 %QQ% QQ$
-$调用 直接性点歌❂QQ$
-返回
-如果尾
-如果:%括号1%==汽水
-$写 寻芸XY/音乐 %QQ% 汽水$
-$调用 直接性点歌❂汽水$
-返回
-如果尾
-如果:%括号1%==喜马拉雅
-$写 寻芸XY/音乐 %QQ% 喜马拉雅$
-$调用 直接性点歌❂喜马拉雅$
-返回
-如果尾
-如果:%括号1%==酷我
-$写 寻芸XY/音乐 %QQ% 酷我$
-$调用 直接性点歌❂酷我$
-返回
-如果尾
-如果:%括号1%==网易云
-$写 寻芸XY/音乐 %QQ% 网易云$
-$调用 直接性点歌❂网易云$
-
 
 (选|选歌)(([0-9]+)|随机)
 如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
@@ -456,7 +427,56 @@ $调用 最终点歌判断❂酷狗❂语音$
 如果尾
 错误
 
-
+下载(音乐|)(([0-9]+)|随机)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+$回复 %MsgId%$
+看不到机器人发送的文件？\n
+1.可能音乐接口没了\n
+2.可能文件没通过检验，发送失败\n
+3.可能机器人没有secluded授权\n
+4.可能被屏蔽了，可以看看群文件\n
+5.报错了，截图日志反馈作者
+$发送$
+$写 寻芸XY/音乐选择序号 %QQ% %括号2%$
+如果:$读 临时/%群号%/%QQ%.txt a 关$==开&%括号2%!=随机
+$调用 收藏下载文件❂❂$
+返回
+如果尾
+畔:$读 寻芸XY/音乐 %QQ% QQ$
+如果:%畔%==QQ
+$调用 最终点歌判断❂QQ❂文件$
+返回
+如果尾
+如果:%畔%==汽水
+$调用 最终点歌判断❂汽水❂文件$
+返回
+如果尾
+如果:%畔%==喜马拉雅
+$调用 最终点歌判断❂喜马拉雅❂文件$
+返回
+如果尾
+如果:%畔%==酷我
+$调用 最终点歌判断❂酷我❂文件$
+返回
+如果尾
+如果:%畔%==网易云
+$调用 最终点歌判断❂网易云❂文件$
+返回
+如果尾
+如果:%畔%==咪咕
+$调用 最终点歌判断❂咪咕❂文件$
+返回
+如果尾
+如果:%畔%==酷狗
+$调用 最终点歌判断❂酷狗❂文件$
+返回
+如果尾
+错误
 
 测试音乐接口
 如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
@@ -497,65 +517,14 @@ $调用 最终点歌判断❂网易云❂语音$
 $调用 最终点歌判断❂咪咕❂语音$
 $调用 最终点歌判断❂酷狗❂语音$
 
-//直接性点歌区域
-
-[内部]直接性点歌❂QQ
-现:$读 寻芸XY/直接点歌歌名 %QQ% 囍$
-b:$访问 https://api.s01s.cn/API/qq-music/?msg=%现%&b=1&ark=ark$
-json:
-%b%
-
-[内部]直接性点歌❂汽水
-现:$读 寻芸XY/直接点歌歌名 %QQ% 囍$
-1:$访问 https://www.hhlqilongzhu.cn//api/dg_qishuimusic.php?msg=%现%&n=1$
-Q:%群号%
-A:汽水音乐:@1[title]
-B:作者:@1[singer]
-C:@1[cover]
-D:@1[music]
-E:@1[music]
-$酷狗音乐 %Q% %A% %B% %C% %D% %E%$
-
-[内部]直接性点歌❂喜马拉雅
-现:$读 寻芸XY/直接点歌歌名 %QQ% 囍$
-//1:$访问 https://api.cenguigui.cn/api/music/dg_ximalayamusic.php?msg=%现%&n=1&num=20&type=json$
-1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=%现%&n=&limit=20&format=json$
-Q:%群号%
-A:喜马拉雅听书:@1[title]
-B:作者:@1[nickname]
-C:@1[cover]
-D:@1[link]
-E:@1[url]
-$酷狗音乐 %Q% %A% %B% %C% %D% %E%$
-
-[内部]直接性点歌❂酷我
-现:$读 寻芸XY/直接点歌歌名 %QQ% 囍$
-1:$访问 https://api.cenguigui.cn/api/music/kuwo/KoWo_Dg.php?type=json&msg=%现%&num=20&n=1$
-Q:%群号%
-A:@1[data][songname]
-B:作者:@1[data][singer]
-C:@1[data][cover]
-D:@1[data][link]
-E:@1[data][url]
-$酷我音乐 %Q% %A% %B% %C% %D% %E%$
-
-[内部]直接性点歌❂网易云
-现:$读 寻芸XY/直接点歌歌名 %QQ% 囍$
-1:$访问 https://api.cenguigui.cn/api/music/netease/WyY_Dg.php?type=json&msg=%现%&num=20&n=1$
-Q:%群号%
-A:@1[data][title]
-B:作者:@1[data][singer]
-C:@1[data][cover]
-D:@1[data][link]
-E:@1[data][music_url]
-$网易云音乐 %Q% %A% %B% %C% %D% %E%$
 
 
 //歌单回复区域
 
 [内部]歌单回复❂QQ
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
-1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=%a%&p=&n=20$
+//1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=%a%&p=&n=20$
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%a%&n=&type=json$
 2:|
 3:.
 1:$替换 %1% %2% %3%$
@@ -576,15 +545,16 @@ $回复 %MsgId%$
 返回
 如果尾
 //如果:%初%==@1[data][%i%][song_title]---@1[data][%i%][song_singer]
-如果:@1[list][%i%]==
+如果:@1[data][%i%]==
 i:[%i%+1]
 $标签跳转 ck$
 返回
 如果尾
-开:[%i%+1].@1[list][%i%][name]---@1[list][%i%][singer]\n-------------------------\n
+开:[%i%+1].@1[data][%i%][song_title]---@1[data][%i%][song_singer]\n-------------------------\n
 i:[%i%+1]
 内:%内%%开%
 $标签跳转 ck$
+
 
 [内部]QQ音乐❂图片菜单
 F:%临时画布%
@@ -602,12 +572,12 @@ $图片 %F%$
 返回
 如果尾
 //如果:%初%==@1[data][%i%][song_title]---@1[data][%i%][song_singer]
-如果:@1[list][%i%]==
+如果:@1[data][%i%]==
 i:[%i%+1]
 $标签跳转 ck$
 返回
 如果尾
-开:[%i%+1].@1[list][%i%][name]---@1[list][%i%][singer]\n--------------------------------------------------------
+开:[%i%+1].@1[data][%i%][song_title]---@1[data][%i%][song_singer]\n--------------------------------------------------------
 $画布 A 文字 90 FF%随机数100000-999999% 150 %位% %开%$
 i:[%i%+1]
 位:[%位%+220]
@@ -786,10 +756,25 @@ $标签跳转 ck$
 //----------------------------------++++++
 //----------------------------------++++++
 
+绑定龙珠API(key|KEY)([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:$主人 %QQ%$==0
+返回
+如果尾
+OK
+$写 龙珠API/音乐功能 key %括号2%$
+
 [内部]歌单回复❂网易云
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 //1:$访问 https://api.cenguigui.cn/api/music/netease/WyY_Dg.php?type=json&msg=%a%&num=20&n=$
-1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%a%&n=&num=20&type=json$
+//1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%a%&n=&num=20&type=json$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%a%&num=20&br=3&type=json&n=$
 如果:$读 寻芸XY/音乐菜单 %群号% 文本$==文本
 $调用 网易云音乐❂文本菜单$
 返回
@@ -990,41 +975,30 @@ $标签跳转 ck$
 
 [内部]最终点歌判断❂QQ
 玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
 如果:%玄%==随机
 小:%随机数0-20%
-a:$读 寻芸XY/音乐功能 %QQ% 囍$
-//1:$访问 https://www.hhlqilongzhu.cn/api/dg_shenmiMusic_SQ.php?msg=%a%&num=20&n=%小%&type=json$
-1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=%a%&p=&n=20$
-Q:%群号%
-A:@1[list][%小%][name]
-B:@1[list][%小%][singer]
-C:@1[list][%小%][cover]
-D:@1[list][%小%][url]
-E:@1[list][%小%][url]
-如果:$授权判断$==1
-$QQ音乐 %Q% %A% %B% %C% %D% %E%$
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%a%&n=%小%&type=json$
+$标签跳转 cc$
 返回
 如果尾
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%a%&n=%玄%&type=json$
+$标签跳转 cc$
+返回
+如果尾
+:cc
+Q:%群号%
+A:@1[data][song_name]
+B:@1[data][song_singer]
+C:@1[data][cover]
+D:@1[data][music_url]
+E:@1[data][music_url]
+如果:$授权判断$==0
 json:
 $访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=qq&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
 返回
 如果尾
-a:$读 寻芸XY/音乐功能 %QQ% 囍$
-玄:[%玄%-1]
-//1:$访问 https://www.hhlqilongzhu.cn/api/dg_shenmiMusic_SQ.php?msg=%a%&num=20&n=%玄%&type=json$
-1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=%a%&p=&n=20$
-Q:%群号%
-A:@1[list][%玄%][name]
-B:@1[list][%玄%][singer]
-C:@1[list][%玄%][cover]
-D:@1[list][%玄%][url]
-E:@1[list][%玄%][url]
-如果:$授权判断$==1
 $QQ音乐 %Q% %A% %B% %C% %D% %E%$
-返回
-如果尾
-json:
-$访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=qq&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
 
 [内部]最终点歌判断❂汽水
 玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
@@ -1142,7 +1116,9 @@ $访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=kuwo&aud
 小:%随机数1-20%
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 //1:$访问 https://api.cenguigui.cn/api/music/netease/WyY_Dg.php?type=json&msg=%a%&num=20&n=%小%$//有[data]
-1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%a%&n=%小%&num=20&type=json$
+//1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%a%&n=%小%&num=20&type=json$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%a%&num=20&br=3&type=json&n=%小%$
 Q:%群号%
 A:@1[title]
 B:@1[singer]
@@ -1159,7 +1135,9 @@ $访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=163&audi
 如果尾
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 //1:$访问 https://api.cenguigui.cn/api/music/netease/WyY_Dg.php?type=json&msg=%a%&num=20&n=%玄%$//有[data]
-1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%a%&n=%玄%&num=20&type=json$
+//1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%a%&n=%玄%&num=20&type=json$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%a%&num=20&br=3&type=json&n=%玄%$
 Q:%群号%
 A:@1[title]
 B:@1[singer]
@@ -1246,33 +1224,33 @@ $酷狗音乐 %Q% %A% %B% %C% %D% %E%$
 json:
 $访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=kugou&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
 
+
+
 //语音点歌专区------------------------------
 
 
 
 [内部]最终点歌判断❂QQ❂语音
 玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
 如果:%玄%==随机
 小:%随机数0-20%
-a:$读 寻芸XY/音乐功能 %QQ% 囍$
-//1:$访问 https://www.hhlqilongzhu.cn/api/dg_shenmiMusic_SQ.php?msg=%a%&num=20&n=%小%&type=json$
-1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=%a%&p=&n=20$
-A:@1[list][%小%][name]
-E:@1[list][%小%][url]
-正在尝试语音发送「QQ音乐」\n「%A%」请稍等.....
-$发送$
-$添加消息 SilkEncode$
-$语音 320 %E%$
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%a%&n=%小%&type=json$
+$标签跳转 cc$
 返回
 如果尾
-玄:[%玄%-1]
-a:$读 寻芸XY/音乐功能 %QQ% 囍$
-//1:$访问 https://www.hhlqilongzhu.cn/api/dg_shenmiMusic_SQ.php?msg=%a%&num=20&n=%玄%&type=json$
-1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=%a%&p=&n=20$
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%a%&n=%玄%&type=json$
+$标签跳转 cc$
+返回
+如果尾
+:cc
 Q:%群号%
-A:@1[list][%玄%][name]
-E:@1[list][%玄%][url]
-正在尝试语音发送「QQ音乐」\n「%A%」请稍等.....
+A:@1[data][song_name]
+B:@1[data][song_singer]
+C:@1[data][cover]
+D:@1[data][music_url]
+E:@1[data][music_url]
+正在尝试语音发送「QQ音乐」\n「%A%--%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
 $语音 320 %E%$
@@ -1283,19 +1261,19 @@ $语音 320 %E%$
 小:%随机数1-20%
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 1:$访问 https://www.hhlqilongzhu.cn//api/dg_qishuimusic.php?msg=%a%&n=%小%$
-A:@1[title]
-E:@1[music]
-正在尝试语音发送「汽水音乐」\n「%A%」请稍等.....
-$发送$
-$添加消息 SilkEncode$
-$语音 320 %E%$
+$标签跳转 cc$
 返回
 如果尾
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 1:$访问 https://www.hhlqilongzhu.cn//api/dg_qishuimusic.php?msg=%a%&n=%玄%$
+$标签跳转 cc$
+返回
+如果尾
+:cc
 A:@1[title]
+B:@1[singer]
 E:@1[music]
-正在尝试语音发送「汽水音乐」\n「%A%」请稍等.....
+正在尝试语音发送「汽水音乐」\n「%A%--%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
 $语音 320 %E%$
@@ -1305,22 +1283,20 @@ $语音 320 %E%$
 如果:%玄%==随机
 小:%随机数1-20%
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
-//1:$访问 https://api.cenguigui.cn/api/music/dg_ximalayamusic.php?msg=%a%&n=%小%&num=20&type=json$
 1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=%a%&n=%小%&limit=20&format=json$
-A:@1[title]
-E:@1[url]
-正在尝试语音发送「喜马拉雅」\n「%A%」请稍等.....
-$发送$
-$添加消息 SilkEncode$
-$语音 320 %E%$
+$标签跳转 cc$
 返回
 如果尾
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
-//1:$访问 https://api.cenguigui.cn/api/music/dg_ximalayamusic.php?msg=%a%&n=%玄%&num=20&type=json$
 1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=%a%&n=%玄%&limit=20&format=json$
+$标签跳转 cc$
+返回
+如果尾
+:cc
 A:@1[title]
+B:@1[nickname]
 E:@1[url]
-正在尝试语音发送「喜马拉雅」\n「%A%」请稍等.....
+正在尝试语音发送「喜马拉雅」\n「%A%--%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
 $语音 320 %E%$
@@ -1331,19 +1307,19 @@ $语音 320 %E%$
 小:%随机数1-20%
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 1:$访问 https://www.hhlqilongzhu.cn/api/dg_kuwomusic.php?msg=%a%&n=%小%&type=json$
-A:@1[song_name]
-E:@1[flac_url]
-正在尝试语音发送「酷我音乐」\n「%A%」请稍等.....
-$发送$
-$添加消息 SilkEncode$
-$语音 320 %E%$
+$标签跳转 cc$
 返回
 如果尾
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 1:$访问 https://www.hhlqilongzhu.cn/api/dg_kuwomusic.php?msg=%a%&n=%玄%&type=json$
+$标签跳转 cc$
+返回
+如果尾
+:cc
 A:@1[song_name]
+B:@1[song_singer]
 E:@1[flac_url]
-正在尝试语音发送「酷我音乐」\n「%A%」请稍等.....
+正在尝试语音发送「酷我音乐」\n「%A%--%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
 $语音 320 %E%$
@@ -1353,22 +1329,22 @@ $语音 320 %E%$
 如果:%玄%==随机
 小:%随机数1-20%
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
-//1:$访问 https://api.cenguigui.cn/api/music/netease/WyY_Dg.php?type=json&msg=%a%&num=20&n=%小%$//有[data]
-1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%a%&n=%小%&num=20&type=json$
-A:@1[title]
-E:@1[music_url]
-正在尝试语音发送「网易云音乐」\n「%A%」请稍等.....
-$发送$
-$添加消息 SilkEncode$
-$语音 320 %E%$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%a%&num=20&br=3&type=json&n=%小%$
+$标签跳转 cc$
 返回
 如果尾
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
-//1:$访问 https://api.cenguigui.cn/api/music/netease/WyY_Dg.php?type=json&msg=%a%&num=20&n=%玄%$
-1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%a%&n=%玄%&num=20&type=json$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%a%&num=20&br=3&type=json&n=%玄%$
+$标签跳转 cc$
+返回
+如果尾
+:cc
 A:@1[title]
+B:@1[singer]
 E:@1[music_url]
-正在尝试语音发送「网易云音乐」\n「%A%」请稍等.....
+正在尝试语音发送「网易云音乐」\n「%A%--%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
 $语音 320 %E%$
@@ -1379,19 +1355,19 @@ $语音 320 %E%$
 小:%随机数1-20%
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 1:$访问 https://api.suyanw.cn/api/migu.php?msg=%a%&n=%小%&sc=20$
-A:@1[data][musicname]
-E:@1[data][musicurl]
-正在尝试语音发送「咪咕音乐」\n「%A%」请稍等.....
-$发送$
-$添加消息 SilkEncode$
-$语音 320 %E%$
+$标签跳转 cc$
 返回
 如果尾
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 1:$访问 https://api.suyanw.cn/api/migu.php?msg=%a%&n=%玄%&sc=20$
+$标签跳转 cc$
+返回
+如果尾
+:cc
 A:@1[data][musicname]
+B:@1[data][singer]
 E:@1[data][musicurl]
-正在尝试语音发送「咪咕音乐」\n「%A%」请稍等.....
+正在尝试语音发送「咪咕音乐」\n「%A%--%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
 $语音 320 %E%$
@@ -1403,24 +1379,190 @@ $语音 320 %E%$
 小:%随机数1-20%
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 1:$访问 https://api.dragonlongzhu.cn/api/dg_kugouSQ.php?msg=%a%&type=json&n=%小%$
-A:@1[data][title]
-E:@1[data][music_url]
-正在尝试语音发送「酷狗音乐」\n「%A%」请稍等.....
-$发送$
-$添加消息 SilkEncode$
-$语音 320 %E%$
+$标签跳转 cc$
 返回
 如果尾
 a:$读 寻芸XY/音乐功能 %QQ% 囍$
 1:$访问 https://api.dragonlongzhu.cn/api/dg_kugouSQ.php?msg=%a%&type=json&n=%玄%$
+$标签跳转 cc$
+返回
+如果尾
+:cc
 A:@1[data][title]
+B:@1[data][singer]
 E:@1[data][music_url]
-正在尝试语音发送「酷狗音乐」\n「%A%」请稍等.....
+正在尝试语音发送「酷狗音乐」\n「%A%--%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
 $语音 320 %E%$
 
 
+//最终点歌判断❂文件区
+
+
+[内部]最终点歌判断❂QQ❂文件
+玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+如果:%玄%==随机
+小:%随机数0-20%
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%a%&n=%小%&type=json$
+$标签跳转 cc$
+返回
+如果尾
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%a%&n=%玄%&type=json$
+$标签跳转 cc$
+返回
+如果尾
+:cc
+Q:%群号%
+A:@1[data][song_name]
+B:@1[data][song_singer]
+C:@1[data][cover]
+D:@1[data][music_url]
+E:@1[data][music_url]
+A:$群文件 %群号% 上传 / QQ音乐❂%A%---%B%.mp3 %E%$
+
+[内部]最终点歌判断❂汽水❂文件
+玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
+如果:%玄%==随机
+小:%随机数1-20%
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 https://www.hhlqilongzhu.cn//api/dg_qishuimusic.php?msg=%a%&n=%小%$
+$标签跳转 cc$
+返回
+如果尾
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 https://www.hhlqilongzhu.cn//api/dg_qishuimusic.php?msg=%a%&n=%玄%$
+$标签跳转 cc$
+返回
+如果尾
+:cc
+Q:%群号%
+A:汽水音乐:@1[title]
+B:作者:@1[singer]
+C:@1[cover]
+D:@1[music]
+E:@1[music]
+A:$群文件 %群号% 上传 / 汽水音乐❂%A%---%B%.mp3 %E%$
+
+
+[内部]最终点歌判断❂喜马拉雅❂文件
+玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
+如果:%玄%==随机
+小:%随机数1-20%
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=%a%&n=%小%&limit=20&format=json$
+$标签跳转 cc$
+返回
+如果尾
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=%a%&n=%玄%&limit=20&format=json$
+$标签跳转 cc$
+返回
+如果尾
+:cc
+Q:%群号%
+A:听书音乐:@1[title]
+B:@1[nickname]
+C:@1[cover]
+D:@1[link]
+E:@1[url]
+A:$群文件 %群号% 上传 / 喜马拉雅听书❂%A%---%B%.mp3 %E%$
+
+[内部]最终点歌判断❂酷我❂文件
+玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
+如果:%玄%==随机
+小:%随机数1-20%
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_kuwomusic.php?msg=%a%&n=%小%&type=json$
+$标签跳转 cc$
+返回
+如果尾
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_kuwomusic.php?msg=%a%&n=%玄%&type=json$
+$标签跳转 cc$
+返回
+如果尾
+:cc
+Q:%群号%
+A:@1[song_name]
+B:@1[song_singer]
+C:@1[cover]
+D:@1[link]
+E:@1[flac_url]
+A:$群文件 %群号% 上传 / 酷我音乐❂%A%---%B%.mp3 %E%$
+
+[内部]最终点歌判断❂网易云❂文件
+玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
+如果:%玄%==随机
+小:%随机数1-20%
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%a%&num=20&br=3&type=json&n=%小%$
+$标签跳转 cc$
+返回
+如果尾
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%a%&num=20&br=3&type=json&n=%玄%$
+$标签跳转 cc$
+返回
+如果尾
+:cc
+Q:%群号%
+A:@1[title]
+B:@1[singer]
+C:@1[cover]
+D:@1[link]
+E:@1[music_url]
+A:$群文件 %群号% 上传 / 网易云音乐❂%A%---%B%.mp3 %E%$
+
+[内部]最终点歌判断❂咪咕❂文件
+玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
+如果:%玄%==随机
+小:%随机数1-20%
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 https://api.suyanw.cn/api/migu.php?msg=%a%&n=%小%&sc=20$
+$标签跳转 cc$
+返回
+如果尾
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 https://api.suyanw.cn/api/migu.php?msg=%a%&n=%玄%&sc=20$
+$标签跳转 cc$
+返回
+如果尾
+:cc
+Q:%群号%
+A:@1[data][musicname]
+B:作者:@1[data][singer]
+//C:@1[data][image]
+C:https://q4.qlogo.cn/g?b=qq&nk=%QQ%&s=5
+D:@1[data][musicurl]
+E:@1[data][musicurl]
+A:$群文件 %群号% 上传 / 咪咕音乐❂%A%---%B%.mp3 %E%$
+
+[内部]最终点歌判断❂酷狗❂文件
+玄:$读 寻芸XY/音乐选择序号 %QQ% 1$
+如果:%玄%==随机
+小:%随机数1-20%
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 https://api.dragonlongzhu.cn/api/dg_kugouSQ.php?msg=%a%&type=json&n=%小%$
+$标签跳转 cc$
+返回
+如果尾
+a:$读 寻芸XY/音乐功能 %QQ% 囍$
+1:$访问 https://api.dragonlongzhu.cn/api/dg_kugouSQ.php?msg=%a%&type=json&n=%玄%$
+$标签跳转 cc$
+返回
+如果尾
+:cc
+Q:%群号%
+A:@1[data][title]
+B:@1[data][singer]
+C:@1[data][cover]
+D:@1[data][link]
+E:@1[data][music_url]
+A:$群文件 %群号% 上传 / 酷狗音乐❂%A%---%B%.mp3 %E%$
 
 
 //收藏功能专区------------------------------
@@ -1480,11 +1622,13 @@ $写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %b%%备%$
 点:$读 寻芸XY/音乐功能 %QQ% 囍$
 如果:%畔%==网易云
 //1:$访问 https://api.cenguigui.cn/api/music/netease/WyY_Dg.php?type=json&msg=%点%&num=20&n=%括号1%$//有[data]
-1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%点%&n=%括号1%&num=20&type=json$
+//1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=%点%&n=%括号1%&num=20&type=json$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%点%&num=20&br=3&type=json&n=%括号1%$
 //a:{"方案":"1","音源":"网易","标题":"@1[data][title]","内容":"@1[data][singer]","图片":"@1[data][cover]","类型":"网易云音乐","链接":"@1[data][music_url]","时间":"%时%"}
 //原a:{"方案":"2","音源":"网易","标题":"%点%","内容":"@1[data][singer]","序号":"%括号1%","页数":"20","时间":"%时%"}
 //原b:{"方案":"2","音源":"网易","标题":"@1[data][title]","内容":"@1[data][singer]"}
-a:{"方案":"2","音源":"网易","标题":"%点%","内容":"@1[singer]","序号":"%括号1%","页数":"20","时间":"%时%"}
+a:{"方案":"2","音源":"网易","标题":"%点%","副标题":"@1[title]","内容":"@1[singer]","序号":"%括号1%","页数":"20","时间":"%时%"}
 b:{"方案":"2","音源":"网易","标题":"@1[title]","内容":"@1[singer]"}
 已把「@b[标题]---@b[内容]」纳入你的收藏～
 $写文件 %引擎目录%database/音乐收藏/%QQ%.txt %文%%a%\n$
@@ -1493,10 +1637,11 @@ $写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %备%%b%\n$
 如果尾
 如果:%畔%==QQ
 //1:$访问 https://www.hhlqilongzhu.cn/api/dg_shenmiMusic_SQ.php?msg=%点%&num=20&n=%括号1%&type=json$
-1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=%点%&p=&n=20$
+//1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=%点%&p=&n=20$
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%点%&n=%括号1%&type=json$
 //a:{"方案":"1","音源":"QQ","标题":"@1[data][song_name]","内容":"@1[data][song_singer]","图片":"@1[data][cover]","类型":"QQ音乐","链接":"@1[data][music_url]","时间":"%时%"}
-a:{"方案":"2","音源":"QQ","标题":"%点%","内容":"@1[list][%括号1%][name]","序号":"%括号1%","页数":"20","时间":"%时%"}
-b:{"方案":"2","音源":"QQ","标题":"@1[list][%括号1%][name]","内容":"@1[list][%括号1%][singer]"}
+a:{"方案":"2","音源":"QQ","标题":"%点%","副标题":"@1[data][%括号1%][song_name]","内容":"@1[data][%括号1%][song_name]","序号":"%括号1%","页数":"20","时间":"%时%"}
+b:{"方案":"2","音源":"QQ","标题":"@1[data][%括号1%][song_name]","内容":"@1[data][%括号1%][song_singer]"}
 已把「@b[标题]---@b[内容]」纳入你的收藏～
 $写文件 %引擎目录%database/音乐收藏/%QQ%.txt %文%%a%\n$
 $写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %备%%b%\n$
@@ -1505,7 +1650,7 @@ $写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %备%%b%\n$
 如果:%畔%==汽水
 1:$访问 https://www.hhlqilongzhu.cn//api/dg_qishuimusic.php?msg=%点%&n=%括号1%$
 //a:{"方案":"1","音源":"汽水","标题":"@1[title]","内容":"@1[singer]","图片":"@1[cover]","类型":"汽水音乐","链接":"@1[music]","时间":"%时%"}
-a:{"方案":"2","音源":"汽水","标题":"%点%","内容":"@1[singer]","序号":"%括号1%","页数":"20","时间":"%时%"}
+a:{"方案":"2","音源":"汽水","标题":"%点%","副标题":"@1[title]","内容":"@1[singer]","序号":"%括号1%","页数":"20","时间":"%时%"}
 b:{"方案":"2","音源":"汽水","标题":"@1[title]","内容":"@1[singer]"}
 已把「@b[标题]---@b[内容]」纳入你的收藏～
 $写文件 %引擎目录%database/音乐收藏/%QQ%.txt %文%%a%\n$
@@ -1516,7 +1661,7 @@ $写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %备%%b%\n$
 //1:$访问 https://api.cenguigui.cn/api/music/kuwo/KoWo_Dg.php?type=json&msg=%点%&num=20&n=%括号1%$
 1:$访问 https://www.hhlqilongzhu.cn/api/dg_kuwomusic.php?msg=%点%&n=%括号1%&type=json$
 //a:{"方案":"1","音源":"酷我","标题":"@1[data][songname]","内容":"@1[data][singer]","图片":"@1[data][cover]","类型":"酷我音乐","链接":"@1[data][url]","时间":"%时%"}
-a:{"方案":"2","音源":"酷我","标题":"%点%","内容":"@1[song_singer]","序号":"%括号1%","页数":"20","时间":"%时%"}
+a:{"方案":"2","音源":"酷我","标题":"%点%","副标题":"@1[song_name]","内容":"@1[song_singer]","序号":"%括号1%","页数":"20","时间":"%时%"}
 b:{"方案":"2","音源":"酷我","标题":"@1[song_name]","内容":"@1[song_singer]"}
 已把「@b[标题]---@b[内容]」纳入你的收藏～
 $写文件 %引擎目录%database/音乐收藏/%QQ%.txt %文%%a%\n$
@@ -1526,7 +1671,7 @@ $写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %备%%b%\n$
 如果:%畔%==咪咕
 1:$访问 https://api.suyanw.cn/api/migu.php?msg=%点%&n=%括号1%&sc=20$
 //a:{"方案":"1","音源":"咪咕","标题":"@1[data][musicname]","内容":"@1[data][singer]","图片":"https://q4.qlogo.cn/g?b=qq&nk=%QQ%&s=5","类型":"咪咕音乐","链接":"@1[data][musicurl]","时间":"%时%"}
-a:{"方案":"2","音源":"咪咕","标题":"%点%","内容":"@1[data][musicname]","序号":"%括号1%","页数":"20","时间":"%时%"}
+a:{"方案":"2","音源":"咪咕","标题":"%点%","副标题":"@1[data][musicname]","内容":"@1[data][musicname]","序号":"%括号1%","页数":"20","时间":"%时%"}
 b:{"方案":"2","音源":"咪咕","标题":"@1[data][musicname]","内容":"@1[data][singer]"}
 已把「@b[标题]---@b[内容]」纳入你的收藏～
 $写文件 %引擎目录%database/音乐收藏/%QQ%.txt %文%%a%\n$
@@ -1537,7 +1682,7 @@ $写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %备%%b%\n$
 //1:$访问 https://api.cenguigui.cn/api/music/dg_ximalayamusic.php?msg=%点%&n=%括号1%&num=20&type=json$
 1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=%点%&n=%括号1%&limit=20&format=json$
 //a:{"方案":"1","音源":"听书","标题":"@1[title]","内容":"@1[nickname]","图片":"@1[cover]","类型":"喜马拉雅","链接":"@1[url]","时间":"%时%"}
-a:{"方案":"2","音源":"听书","标题":"%点%","内容":"@1[nickname]","序号":"%括号1%","页数":"20","时间":"%时%"}
+a:{"方案":"2","音源":"听书","标题":"%点%","副标题":"@1[title]","内容":"@1[nickname]","序号":"%括号1%","页数":"20","时间":"%时%"}
 b:{"方案":"2","音源":"听书","标题":"@1[title]","内容":"@1[nickname]"}
 已把「@b[标题]---@b[内容]」纳入你的收藏～
 $写文件 %引擎目录%database/音乐收藏/%QQ%.txt %文%%a%\n$
@@ -1546,7 +1691,7 @@ $写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %备%%b%\n$
 如果尾
 如果:%畔%==酷狗
 1:$访问 https://api.dragonlongzhu.cn/api/dg_kugouSQ.php?msg=%点%&type=json&n=%括号1%$
-a:{"方案":"2","音源":"酷狗","标题":"%点%","内容":"@1[data][singer]","序号":"%括号1%","页数":"20","时间":"%时%"}
+a:{"方案":"2","音源":"酷狗","标题":"%点%","副标题":"@1[data][title]","内容":"@1[data][singer]","序号":"%括号1%","页数":"20","时间":"%时%"}
 b:{"方案":"2","音源":"酷狗","标题":"@1[data][title]","内容":"@1[data][singer]"}
 已把「@b[标题]---@b[内容]」纳入你的收藏～
 $写文件 %引擎目录%database/音乐收藏/%QQ%.txt %文%%a%\n$
@@ -1626,6 +1771,20 @@ $调用 重新点歌❂语音发送$
 $发送$
 $添加消息 SilkEncode$
 $语音 320 @a[链接]$
+
+[内部]收藏下载文件❂❂
+1:$读 寻芸XY/音乐选择序号 %QQ% 1$
+a:$文件一行 %引擎目录%database/音乐收藏/%QQ%.txt %1% 错误$
+b:$文件一行 %引擎目录%database/音乐收藏/备份/%QQ%.txt %1% 错误$
+如果:%a%==错误|%a%==|%b%==错误|%b%==
+错误/无效序号
+返回
+如果尾
+如果:@a[方案]==2
+$调用 重新点歌❂发送❂文件$
+返回
+如果尾
+错误
 
 [内部]未授权卡片发送
 如果:@a[类型]==QQ音乐
@@ -1808,6 +1967,7 @@ json:
 [内部]重新点歌❂发送
 1:$读 寻芸XY/音乐选择序号 %QQ% 1$
 a:$文件一行 %引擎目录%database/音乐收藏/%QQ%.txt %1% 错误$
+b:$文件一行 %引擎目录%database/音乐收藏/备份/%QQ%.txt %1% 错误$
 如果:@a[音源]==网易
 $调用 重新点歌❂网易内容$
 返回
@@ -1839,14 +1999,19 @@ $调用 重新点歌❂酷狗内容$
 错误
 
 [内部]重新点歌❂网易内容
-//1:$访问 https://api.cenguigui.cn/api/music/netease/WyY_Dg.php?type=json&msg=@a[标题]&num=@a[页数]&n=@a[序号]$//有[data]
-1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=@a[标题]&n=@a[序号]&num=@a[页数]&type=json$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=@a[标题]&num=@a[页数]&br=3&type=json&n=@a[序号]$
 Q:%群号%
 A:@1[title]
 B:@1[singer]
 C:@1[cover]
 D:@1[link]
 E:@1[music_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 如果:$授权判断$==1
 $网易云音乐 %Q% %A% %B% %C% %D% %E%$
 返回
@@ -1855,7 +2020,6 @@ json:
 $访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=163&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
 
 [内部]重新点歌❂酷我内容
-//1:$访问 https://api.cenguigui.cn/api/music/kuwo/KoWo_Dg.php?type=json&msg=@a[标题]&num=@a[页数]&n=@a[序号]$
 1:$访问 https://www.hhlqilongzhu.cn/api/dg_kuwomusic.php?msg=@a[标题]&n=@a[序号]&type=json$
 Q:%群号%
 A:@1[song_name]
@@ -1863,6 +2027,11 @@ B:@1[song_singer]
 C:@1[cover]
 D:@1[link]
 E:@1[flac_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 如果:$授权判断$==1
 $酷我音乐 %Q% %A% %B% %C% %D% %E%$
 返回
@@ -1878,6 +2047,11 @@ B:@1[singer]
 C:@1[cover]
 D:@1[music]
 E:@1[music]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 如果:$授权判断$==1
 $酷狗音乐 %Q% %A% %B% %C% %D% %E%$
 返回
@@ -1893,6 +2067,11 @@ B:@1[data][singer]
 C:https://q4.qlogo.cn/g?b=qq&nk=%QQ%&s=5
 D:@1[data][musicurl]
 E:@1[data][musicurl]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 如果:$授权判断$==1
 $咪咕音乐 %Q% %A% %B% %C% %D% %E%$
 返回
@@ -1902,15 +2081,18 @@ $访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=163&audi
 
 [内部]重新点歌❂QQ内容
 玄:@a[序号]
-玄:[%玄%-1]
-//1:$访问 https://www.hhlqilongzhu.cn/api/dg_shenmiMusic_SQ.php?msg=@a[标题]&num=@a[页数]&n=@a[序号]&type=json$
-1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=@a[标题]&p=&n=20$
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=@a[标题]&n=@a[序号]&type=json$
 Q:%群号%
-A:@1[list][%玄%][name]
-B:@1[list][%玄%][singer]
-C:@1[list][%玄%][cover]
-D:@1[list][%玄%][url]
-E:@1[list][%玄%][url]
+A:@1[data][song_name]
+B:@1[data][song_singer]
+C:@1[data][cover]
+D:@1[data][music_url]
+E:@1[data][music_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 如果:$授权判断$==1
 $QQ音乐 %Q% %A% %B% %C% %D% %E%$
 返回
@@ -1919,7 +2101,6 @@ json:
 $访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=qq&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
 
 [内部]重新点歌❂听书内容
-//1:$访问 https://api.cenguigui.cn/api/music/dg_ximalayamusic.php?msg=@a[标题]&n=@a[序号]&num=@a[页数]&type=json$
 1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=@a[标题]&n=@a[序号]&limit=@a[页数]&format=json$
 Q:%群号%
 A:@1[title]
@@ -1927,13 +2108,17 @@ B:@1[nickname]
 C:@1[cover]
 D:@1[link]
 E:@1[url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 如果:$授权判断$==1
 $酷狗音乐 %Q% %A% %B% %C% %D% %E%$
 返回
 如果尾
 json:
 $访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=pdd&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
-
 
 [内部]重新点歌❂酷狗内容
 1:$访问 https://api.dragonlongzhu.cn/api/dg_kugouSQ.php?msg=@a[标题]&type=json&n=@a[序号]$
@@ -1943,6 +2128,11 @@ B:@1[data][singer]
 C:@1[data][cover]
 D:@1[data][link]
 E:@1[data][music_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 如果:$授权判断$==1
 $酷狗音乐 %Q% %A% %B% %C% %D% %E%$
 返回
@@ -1958,6 +2148,7 @@ $访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=kugou&au
 [内部]重新点歌❂语音发送
 1:$读 寻芸XY/音乐选择序号 %QQ% 1$
 a:$文件一行 %引擎目录%database/音乐收藏/%QQ%.txt %1% 错误$
+b:$文件一行 %引擎目录%database/音乐收藏/备份/%QQ%.txt %1% 错误$
 如果:@a[音源]==网易
 $调用 重新点歌❂网易语音内容$
 返回
@@ -1989,11 +2180,17 @@ $调用 重新点歌❂酷狗语音内容$
 错误
 
 [内部]重新点歌❂网易语音内容
-1:$访问 https://www.hhlqilongzhu.cn/api/dg_wyymusic.php?gm=@a[标题]&n=@a[序号]&num=@a[页数]&type=json$
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=@a[标题]&num=@a[页数]&br=3&type=json&n=@a[序号]$
 Q:%群号%
 A:@1[title]
 B:@1[singer]
 E:@1[music_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 正在尝试语音发送「网易云音乐」\n「%A%---%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
@@ -2004,6 +2201,11 @@ $语音 320 %E%$
 A:@1[song_name]
 B:@1[song_singer]
 E:@1[flac_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 正在尝试语音发送「酷我音乐」\n「%A%---%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
@@ -2014,6 +2216,11 @@ $语音 320 %E%$
 A:@1[title]
 B:@1[singer]
 E:@1[music]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 正在尝试语音发送「汽水音乐」\n「%A%---%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
@@ -2025,6 +2232,11 @@ $语音 320 %E%$
 A:@1[data][musicname]
 B:@1[data][singer]
 E:@1[data][musicurl]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 正在尝试语音发送「咪咕音乐」\n「%A%---%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
@@ -2033,23 +2245,30 @@ $语音 320 %E%$
 
 [内部]重新点歌❂QQ语音内容
 玄:@a[序号]
-玄:[%玄%-1]
-//1:$访问 https://www.hhlqilongzhu.cn/api/dg_shenmiMusic_SQ.php?msg=@a[标题]&num=@a[页数]&n=@a[序号]&type=json$
-1:$访问 https://zj.v.api.aa1.cn/api/qqmusic/demo.php?type=1&q=@a[标题]&p=&n=20$
-A:@1[list][%玄%][name]
-B:@1[list][%玄%][singer]
-E:@1[list][%玄%][url]
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=@a[标题]&n=@a[序号]&type=json$
+A:@1[data][song_name]
+B:@1[data][song_singer]
+E:@1[data][music_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 正在尝试语音发送「QQ音乐」\n「%A%---%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
 $语音 320 %E%$
 
 [内部]重新点歌❂听书语音内容
-//1:$访问 https://api.cenguigui.cn/api/music/dg_ximalayamusic.php?msg=@a[标题]&n=@a[序号]&num=@a[页数]&type=json$
 1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=@a[标题]&n=@a[序号]&limit=@a[页数]&format=json$
 A:@1[title]
 B:@1[nickname]
 E:@1[url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 正在尝试语音发送「听书音乐」\n「%A%---%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
@@ -2060,10 +2279,163 @@ $语音 320 %E%$
 A:@1[data][title]
 B:@1[data][singer]
 E:@1[data][music_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
 正在尝试语音发送「酷狗音乐」\n「%A%---%B%」请稍等.....
 $发送$
 $添加消息 SilkEncode$
 $语音 320 %E%$
+
+
+
+//重新点歌下载专区------------------------------
+
+[内部]重新点歌❂发送❂文件
+1:$读 寻芸XY/音乐选择序号 %QQ% 1$
+a:$文件一行 %引擎目录%database/音乐收藏/%QQ%.txt %1% 错误$
+b:$文件一行 %引擎目录%database/音乐收藏/备份/%QQ%.txt %1% 错误$
+如果:@a[音源]==网易
+$调用 重新点歌❂网易内容❂文件$
+返回
+如果尾
+如果:@a[音源]==酷我
+$调用 重新点歌❂酷我内容❂文件$
+返回
+如果尾
+如果:@a[音源]==汽水
+$调用 重新点歌❂汽水内容❂文件$
+返回
+如果尾
+如果:@a[音源]==咪咕
+$调用 重新点歌❂咪咕内容❂文件$
+返回
+如果尾
+如果:@a[音源]==QQ
+$调用 重新点歌❂QQ内容❂文件$
+返回
+如果尾
+如果:@a[音源]==听书
+$调用 重新点歌❂听书内容❂文件$
+返回
+如果尾
+如果:@a[音源]==酷狗
+$调用 重新点歌❂酷狗内容❂文件$
+返回
+如果尾
+错误
+
+[内部]重新点歌❂网易内容❂文件
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=@a[标题]&num=@a[页数]&br=3&type=json&n=@a[序号]$
+Q:%群号%
+A:@1[title]
+B:@1[singer]
+C:@1[cover]
+D:@1[link]
+E:@1[music_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
+A:$群文件 %群号% 上传 / QQ音乐❂%A%---%B%.mp3 %E%$
+
+[内部]重新点歌❂酷我内容❂文件
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_kuwomusic.php?msg=@a[标题]&n=@a[序号]&type=json$
+Q:%群号%
+A:@1[song_name]
+B:@1[song_singer]
+C:@1[cover]
+D:@1[link]
+E:@1[flac_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
+A:$群文件 %群号% 上传 / 酷我音乐❂%A%---%B%.mp3 %E%$
+
+[内部]重新点歌❂汽水内容❂文件
+1:$访问 https://www.hhlqilongzhu.cn//api/dg_qishuimusic.php?msg=@a[标题]&n=@a[序号]$
+Q:%群号%
+A:@1[title]
+B:@1[singer]
+C:@1[cover]
+D:@1[music]
+E:@1[music]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
+A:$群文件 %群号% 上传 / 汽水音乐❂%A%---%B%.mp3 %E%$
+
+[内部]重新点歌❂咪咕内容❂文件
+1:$访问 https://api.suyanw.cn/api/migu.php?msg=@a[标题]&n=@a[序号]&sc=@a[页数]$
+Q:%群号%
+A:@1[data][musicname]
+B:@1[data][singer]
+C:https://q4.qlogo.cn/g?b=qq&nk=%QQ%&s=5
+D:@1[data][musicurl]
+E:@1[data][musicurl]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
+A:$群文件 %群号% 上传 / 咪咕音乐❂%A%---%B%.mp3 %E%$
+
+[内部]重新点歌❂QQ内容❂文件
+玄:@a[序号]
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=@a[标题]&n=@a[序号]&type=json$
+Q:%群号%
+A:@1[data][song_name]
+B:@1[data][song_singer]
+C:@1[data][cover]
+D:@1[data][music_url]
+E:@1[data][music_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
+A:$群文件 %群号% 上传 / QQ音乐❂%A%---%B%.mp3 %E%$
+
+[内部]重新点歌❂听书内容❂文件
+1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=@a[标题]&n=@a[序号]&limit=@a[页数]&format=json$
+Q:%群号%
+A:@1[title]
+B:@1[nickname]
+C:@1[cover]
+D:@1[link]
+E:@1[url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
+A:$群文件 %群号% 上传 / 喜马拉雅听书❂%A%---%B%.mp3 %E%$
+
+[内部]重新点歌❂酷狗内容❂文件
+1:$访问 https://api.dragonlongzhu.cn/api/dg_kugouSQ.php?msg=@a[标题]&type=json&n=@a[序号]$
+Q:%群号%
+A:@1[data][title]
+B:@1[data][singer]
+C:@1[data][cover]
+D:@1[data][link]
+E:@1[data][music_url]
+如果:%A%!=@b[标题]|%B%!=@b[内容]
+$回复 %MsgId%$
+音乐数据异常 请删除后重新收藏！
+返回
+如果尾
+A:$群文件 %群号% 上传 / 酷狗音乐❂%A%---%B%.mp3 %E%$
+
+
+
 
 音乐公告
 如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
@@ -2072,71 +2444,496 @@ $语音 320 %E%$
 如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
 返回
 如果尾
+F:%临时画布%
+K:%临时画布%
+D:50
+Z:40
+L:40
+1:欢迎使用者使用本词库\n本人非专门编写机器人相关内容，也不从事编程相关规则，词库只是个小爱好\n\n本词库为「寻芸XY」系列词库的音乐包分支\n可单独使用，仅需把开关激活检测删掉即可\n\n如您在所以途中有更好的建议，又或者说是接口用不了了，又或是在某一个功能出bug了，都可反馈给我
+2:本词库具体功能&注意事项声明：\n\n本词库的接口均来源于网络，都是免费的接口\n\n【重点】本词库并非共享点歌！！！\n每一个人选歌的结果是不一样的，除非你们在同一个「音源」及点了「同一首」音乐！！！！\n默认点歌内容为「囍」\n\n【点歌】点歌需要加歌名或歌手的名字\n\n【选歌】选歌前需要先点歌，「别人」点的歌，你「不能」选，即使选了那也只是你上一次歌单里面的音乐\n说人话就是:各点各的，各听各的\n\n【语音选歌】语音选歌是发送语音的，跟前者不同，前者是直接发送语音卡片的\n发送语音有个不好的地方:发送时间取决于你的网速&文件大小\n\n【我的歌单】这个是收藏音乐的，如果你喜欢某一个音乐，可以收藏进来，方便下一次使用\n发送该指令后，直接发送 选歌/音乐选歌 也可以选择音乐！\n\n【收藏】收藏音乐，字面意思，收藏前需要先点歌，收藏是从点歌返回的歌单里面取值记录的，所以必须先点歌\n\n【取消收藏】字面意思，取消收藏音乐时必须先发一次「我的收藏」以刷新本地你的歌单文件\n取消时需按照序号来，成功取消收藏序号将会自动重新排序！\n\n【偷取歌单】字面意思，在你歌单的基础上把别人的歌单粘贴来你这\n\n【复制歌单】字面意思，直接把别人的歌单覆盖过来\n\n【修复歌单】仅支持1.7版本及以上收藏的音乐，1.6及更早均不支持\n\n【全部取消收藏】例：全部取消收藏网易云\n该功能是把你歌单里面的某一个音源全部删掉\n建议配搭「修复歌单」一并使用\n\n【下载音乐】字面意思，有框架授权才能正常使用，指令:下载+序号
+$画布 A 创建 2564 450 FFFFFFFF$
+$画布 A 文字 %D% FF%随机数100000-999999% %Z% %L% %1%$
+$画布 A 保存 %F%$
+$画布 U 创建 2564 2030 FFFFFFFF$
+$画布 U 文字 %D% FF%随机数100000-999999% %Z% %L% %2%$
+$画布 U 保存 %K%$
+$回复 %MsgId%$
+【前言】
+$图片 %F%$
+\n
+【正文】
+$图片 %K%$
+
+
+
+(重新|修复)(排序|排列|)(歌单|收藏|)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+苏:$文件行数 %引擎目录%database/音乐收藏/%QQ%.txt$
+内:
+i:0
+:cc
+如果:%i%>%苏%
+$回复 %MsgId%$
+已重新排序～
+$写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %内%$
+返回
+如果尾
+主:$文件一行 %引擎目录%database/音乐收藏/%QQ%.txt %i% cw$
+如果:%主%==cw
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+如果:%主%==
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+a:{}
+$JSON 添加 a 方案 @主[方案]$
+$JSON 添加 a 音源 @主[音源]$
+$JSON 添加 a 标题 @主[副标题]$
+$JSON 添加 a 内容 @主[内容]$
+内:%内%%a%\n
+i:[%i%+1]
+$标签跳转 cc$
+
+
+全部取消收藏(酷狗|网易云|汽水|QQ|酷我|喜马拉雅|咪咕)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+i:0
+q:0
+数:$文件行数 %引擎目录%database/音乐收藏/备份/%QQ%.txt$
+苏:$文件行数 %引擎目录%database/音乐收藏/%QQ%.txt$
+内:
+个:
+:cc
+如果:%i%>%数%
+$写文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt %内%$
+$标签跳转 jj$
+返回
+如果尾
+a:$文件一行 %引擎目录%database/音乐收藏/备份/%QQ%.txt %i% cw$
+k:$读文件 %引擎目录%database/音乐收藏/备份/%QQ%.txt$
+如果:%a%==cw
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+a:$文件一行 %引擎目录%database/音乐收藏/备份/%QQ%.txt %i% cw$
+如果:%a%==
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+a:$文件一行 %引擎目录%database/音乐收藏/备份/%QQ%.txt %i% cw$
+如果:@a[音源]==%括号1%
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+内:%内%%a%\n
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+:jj
+如果:%q%>%苏%
+$回复 %MsgId%$
+已全部取消收藏「%括号1%」音源
+$写文件 %引擎目录%database/音乐收藏/%QQ%.txt %个%$
+返回
+如果尾
+B:$文件一行 %引擎目录%database/音乐收藏/%QQ%.txt %q% cw$
+如果:%B%==cw
+q:[%q%+1]
+$标签跳转 jj$
+返回
+如果尾
+B:$文件一行 %引擎目录%database/音乐收藏/%QQ%.txt %q% cw$
+如果:%B%==
+q:[%q%+1]
+$标签跳转 jj$
+返回
+如果尾
+B:$文件一行 %引擎目录%database/音乐收藏/%QQ%.txt %q% cw$
+如果:%B%==cw
+q:[%q%+1]
+$标签跳转 jj$
+返回
+如果尾
+如果:@B[音源]==%括号1%
+q:[%q%+1]
+$标签跳转 jj$
+返回
+如果尾
+个:%个%%B%\n
+q:[%q%+1]
+$标签跳转 jj$
+
+
+@.* music#(qq|qs|wyy|kw|kg|xmly|mg)#([0-9]+)#([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:%AT0%!=%登录账号%
+返回
+如果尾
+如果:%括号1%==qq
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%括号3%&n=%括号2%&type=json$
+Q:%群号%
+A:@1[data][song_name]
+B:@1[data][song_singer]
+C:@1[data][cover]
+D:@1[data][music_url]
+E:@1[data][music_url]
 如果:$授权判断$==0
-$调用 未授权❂音乐公告$
-返回
-如果尾
-$回调 公告❂1$
-$回调 公告❂2$
-$新建消息 X$
-$添加消息 X Group$
-$添加消息 X GroupId 1001671961$
-$添加消息 X MultiMsg %1%$
-$添加消息 X MultiMsg %2%$
-$添加消息 X Time %时间戳秒%$
-$发送消息 X X$
-I:%X:Id%
-N:%X:Name%
-card_all:
-<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<msg serviceID="35" templateID="1" action="viewMultiMsg" brief="不要酱紫啦～" m_resid="%I%" m_fileName="%N%" tSum="2" sourceMsgId="0" url="" flag="3" adverSign="0" multiMsgFlag="0">
-<item layout="1" advertiser_id="0" aid="0">
-<title size="34" maxLines="2" lineSpace="12">音乐公告-使用必看</title>
-<title size="26" color="#777777" maxLines="2" lineSpace="12">mtimk：不看公告后悔俩年</title>
-<title size="26" color="#777777" maxLines="2" lineSpace="12">芸熙：看了呢？</title>
-<title size="26" color="#777777" maxLines="2" lineSpace="12">mtimk：后悔一辈子</title>
-<hr hidden="false" style="0" />
-<summary size="26" color="#777777">此内容可能对未成年人存在心理危害！</summary>
-</item><source name="聊天记录" icon="" action="" appid="-1" />
-</msg>
-
-[内部]公告❂1
-$新建消息 A$
-$添加消息 A MultiMsgPut$
-$添加消息 A Group$
-$添加消息 A GroupId 1001671961$
-$添加消息 A Uin 3573995540$
-$添加消息 A UinName 寻芸配置作者$
-内:【前言】\n\n欢迎使用者使用本词库\n本人非专门编写机器人相关内容，也不从事编程相关规则，词库只是个小爱好\n\n本词库为「寻芸XY」系列词库的音乐包分支\n可单独使用，仅需把开关激活检测删掉即可\n\n如您在所以途中有更好的建议，又或者说是接口用不了了，又或是在某一个功能出bug了，都可反馈给我
-$添加消息 A Text %内%$
-$发送消息 A A$
-1:%A:MsgId%
-
-[内部]公告❂2
-$新建消息 A$
-$添加消息 A MultiMsgPut$
-$添加消息 A Group$
-$添加消息 A GroupId 1001671961$
-$添加消息 A Uin 3573995540$
-$添加消息 A UinName 寻芸配置作者$
-内:本词库具体功能&注意事项声明：\n\n本词库的接口均来源于网络，都是免费的接口\n\n【重点】本词库并非共享点歌！！！\n每一个人选歌的结果是不一样的，除非你们在同一个「音源」及点了「同一首」音乐！！！！\n默认点歌内容为「囍」\n\n【点歌】点歌需要加歌名或歌手的名字\n\n【选歌】选歌前需要先点歌，「别人」点的歌，你「不能」选，即使选了那也只是你上一次歌单里面的音乐\n说人话就是:各点各的，各听各的\n\n【语音选歌】语音选歌是发送语音的，跟前者不同，前者是直接发送语音卡片的\n发送语音有个不好的地方:发送时间取决于你的网速&文件大小\n\n【我的歌单】这个是收藏音乐的，如果你喜欢某一个音乐，可以收藏进来，方便下一次使用\n发送该指令后，直接发送 选歌/音乐选歌 也可以选择音乐！\n\n【收藏】收藏音乐，字面意思，收藏前需要先点歌，收藏是从点歌返回的歌单里面取值记录的，所以必须先点歌\n\n【取消收藏】字面意思，取消收藏音乐时必须先发一次「我的收藏」以刷新本地你的歌单文件\n取消时需按照序号来，成功取消收藏序号将会自动重新排序！\n\n【偷取歌单】字面意思，在你歌单的基础上把别人的歌单粘贴来你这\n\n【复制歌单】字面意思，直接把别人的歌单覆盖过来
-$添加消息 A Text %内%$
-$发送消息 A A$
-2:%A:MsgId%
-
-[内部]未授权❂音乐公告
-内:【前言】\n\n欢迎使用者使用本词库\n本人非专门编写机器人相关内容，也不从事编程相关规则，词库只是个小爱好\n\n本词库为「寻芸XY」系列词库的音乐包分支\n可单独使用，仅需把开关激活检测删掉即可\n\n如您在所以途中有更好的建议，又或者说是接口用不了了，又或是在某一个功能出bug了，都可反馈给我
-个:本词库具体功能&注意事项声明：\n\n本词库的接口均来源于网络，都是免费的接口\n\n【重点】本词库并非共享点歌！！！\n每一个人选歌的结果是不一样的，除非你们在同一个「音源」及点了「同一首」音乐！！！！\n默认点歌内容为「囍」\n\n【点歌】点歌需要加歌名或歌手的名字\n\n【选歌】选歌前需要先点歌，「别人」点的歌，你「不能」选，即使选了那也只是你上一次歌单里面的音乐\n说人话就是:各点各的，各听各的\n\n【语音选歌】语音选歌是发送语音的，跟前者不同，前者是直接发送语音卡片的\n发送语音有个不好的地方:发送时间取决于你的网速&文件大小\n\n【我的歌单】这个是收藏音乐的，如果你喜欢某一个音乐，可以收藏进来，方便下一次使用\n发送该指令后，直接发送 选歌/音乐选歌 也可以选择音乐！\n\n【收藏】收藏音乐，字面意思，收藏前需要先点歌，收藏是从点歌返回的歌单里面取值记录的，所以必须先点歌\n\n【取消收藏】字面意思，取消收藏音乐时必须先发一次「我的收藏」以刷新本地你的歌单文件\n取消时需按照序号来，成功取消收藏序号将会自动重新排序！\n\n【偷取歌单】字面意思，在你歌单的基础上把别人的歌单粘贴来你这\n\n【复制歌单】字面意思，直接把别人的歌单覆盖过来
-m:[]
-$JSON 添加 m %内%$
-$JSON 添加 m %个%$
-//M:$替换 @ %m%@","@$
-U:https://api.s01s.cn/API/lt_zf/
-P:{"zf":%m%,"ms":"音乐公告","yh":["寻芸配置作者","3573995540"],"type":"text"}
-A:$访问 POST %U% %P%$
-如果:@A[app]==com.tencent.multimsg
 json:
-%A%
+$访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=qq&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
 返回
 如果尾
-%A%
+$QQ音乐 %Q% %A% %B% %C% %D% %E%$
+返回
+如果尾
+如果:%括号1%==qs
+1:$访问 https://www.hhlqilongzhu.cn//api/dg_qishuimusic.php?msg=%括号3%&n=%括号2%$
+Q:%群号%
+A:汽水音乐:@1[title]
+B:作者:@1[singer]
+C:@1[cover]
+D:@1[music]
+E:@1[music]
+如果:$授权判断$==1
+$酷狗音乐 %Q% %A% %B% %C% %D% %E%$
+返回
+如果尾
+json:
+$访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=yk&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
+返回
+如果尾
+如果:%括号1%==wyy
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%括号3%&num=20&br=3&type=json&n=%括号2%$
+Q:%群号%
+A:@1[title]
+B:@1[singer]
+C:@1[cover]
+D:@1[link]
+E:@1[music_url]
+如果:$授权判断$==1
+$网易云音乐 %Q% %A% %B% %C% %D% %E%$
+返回
+如果尾
+json:
+$访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=163&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
+返回
+如果尾
+如果:%括号1%==kw
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_kuwomusic.php?msg=%括号3%&n=%括号2%&type=json$
+Q:%群号%
+A:@1[song_name]
+B:@1[song_singer]
+C:@1[cover]
+D:@1[link]
+E:@1[flac_url]
+如果:$授权判断$==1
+$酷我音乐 %Q% %A% %B% %C% %D% %E%$
+返回
+如果尾
+json:
+$访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=kuwo&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
+返回
+如果尾
+如果:%括号1%==kg
+1:$访问 https://api.dragonlongzhu.cn/api/dg_kugouSQ.php?msg=%括号3%&type=json&n=%括号2%$
+Q:%群号%
+A:@1[data][title]
+B:@1[data][singer]
+C:@1[data][cover]
+D:@1[data][link]
+E:@1[data][music_url]
+如果:$授权判断$==1
+$酷狗音乐 %Q% %A% %B% %C% %D% %E%$
+返回
+如果尾
+json:
+$访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=kugou&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
+返回
+如果尾
+如果:%括号2%==xmly
+1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=%括号3%&n=%括号2%&limit=20&format=json$
+Q:%群号%
+A:听书音乐:@1[title]
+B:@1[nickname]
+C:@1[cover]
+D:@1[link]
+E:@1[url]
+如果:$授权判断$==1
+$酷狗音乐 %Q% %A% %B% %C% %D% %E%$
+返回
+如果尾
+json:
+$访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=pdd&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
+返回
+如果尾
+如果:%括号1%==mg
+1:$访问 https://api.suyanw.cn/api/migu.php?msg=%括号3%&n=%括号2%&sc=20$
+Q:%群号%
+A:@1[data][musicname]
+B:@1[data][singer]
+C:https://q4.qlogo.cn/g?b=qq&nk=%QQ%&s=5
+D:@1[data][musicurl]
+E:@1[data][musicurl]
+如果:$授权判断$==1
+$咪咕音乐 %Q% %A% %B% %C% %D% %E%$
+返回
+如果尾
+json:
+$访问 https://api.s01s.cn/API/music_ark/?title=%A%&singer=%B%&pingtai=163&audio=%E%&img=%C%&wx=寻芸XY-音乐功能&link=%D%$
+
+
+(@.*|)快捷音乐菜单
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:%括号1%==
+$标签跳转 hh$
+返回
+如果尾
+如果:%括号1%!=&%AT0%!=%登录账号%
+返回
+如果尾
+:hh
+a:%随机数10000-99999%
+b:%随机数10000-99999%
+f:{"1":{"2":{"1":%群号%}},"2":{"1":1,"2":0,"3":0},"3":{"1":{"2":{"53":{"1":46,"2":{"1":{"1":[{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"别点我","2":"HDTianRu","3":1},"3":{"1":2,"2":{"1":2},"4":"err","5":"妈妈～","7":0,"8":1}}]},{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"我的收藏","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"我的收藏","7":0,"8":1}},{"1":"01JXBGK7NMRV5HGBNZ5NSBNYGC","2":{"1":"修复歌单","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"修复歌单","7":0,"8":1}}]},{"1":[{"1":"3","2":{"1":"QQ","3":1},"3":{"1":2,"2":{"1":2},"5":"快捷QQ点歌"}},{"1":"3","2":{"1":"酷狗","3":0},"3":{"1":2,"2":{"1":2},"5":"快捷酷狗点歌"}},{"1":"3","2":{"1":"酷我","3":0},"3":{"1":2,"2":{"1":2},"5":"快捷酷我点歌"}},{"1":"3","2":{"1":"咪咕","3":1},"3":{"1":2,"2":{"1":2},"5":"快捷咪咕点歌"}}]},{"1":[{"1":"3","2":{"1":"网易云","3":1},"3":{"1":2,"2":{"1":2},"5":"快捷网易云点歌"}},{"1":"3","2":{"1":"喜马拉雅","3":0},"3":{"1":2,"2":{"1":2},"5":"快捷喜马拉雅点歌"}},{"1":"3","2":{"1":"汽水","3":1},"3":{"1":2,"2":{"1":2},"5":"快捷汽水点歌"}}]},{"1":[{"1":"3","2":{"1":"取消收藏","3":1},"3":{"1":2,"2":{"1":2},"5":"取消收藏"}},{"1":"01JXBGK7NMAKW5EGG8CTRE6TYG","2":{"1":"清空歌单","2":"HDTianRu","3":1},"3":{"1":2,"2":{"1":2},"4":"err","5":"清空歌单","7":0,"8":1}},{"1":"01JXBGK7NMAKW5EGG8CTRE6TYG","2":{"1":"确定清空","2":"HDTianRu","3":1},"3":{"1":2,"2":{"1":2},"4":"err","5":"确定清空歌单","7":0,"8":1}}]}]}},"3":1}}}},"4":2518%b%,"5":1713%a%}
+h:{"content-type":"application/json"}
+U:https://api.s01s.cn/API/proto/proto_en.php
+$写 卡片冷却/很喜欢.txt 全局 %时间戳毫秒%$
+F:$访问 POST %U% %f% %h% R$
+$新建消息 A$
+$添加消息 A Reply$
+$添加消息 A Cmd MessageSvc.PbSendMsg$
+$添加消息 A Dat %F%$
+$发送消息 A R$
+如果:$获取消息 R Dat 无$==无
+发包失败
+返回
+如果尾
+c:%R:Dat%
+
+(@.*|)(按钮|快捷)(QQ|汽水|网易云|酷我|酷狗|喜马拉雅|咪咕)点歌([\s\S]*)
+如果:$读 寻芸XY/服务器/开关 X 正常$!=正常
+返回
+如果尾
+如果:$读 激活验证/卡密激活状态/%群号% X 未激活$==未激活
+返回
+如果尾
+如果:%括号1%!=&%AT0%!=%登录账号%
+返回
+如果尾
+$写 寻芸XY/音乐功能 %QQ% %括号4%$
+$写 临时/%群号%/%QQ%.txt a 关$
+如果:%括号3%==汽水
+1:$访问 https://www.hhlqilongzhu.cn//api/dg_qishuimusic.php?msg=%括号4%&type=json$
+$写 寻芸XY/音乐 %QQ% 汽水$
+$标签跳转 jj$
+返回
+如果尾
+如果:%括号3%==QQ
+Y: 
+太:$替换 %括号4% %Y% $
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_QQmusicflac.php?msg=%太%&n=&type=json$
+$写 寻芸XY/音乐 %QQ% QQ$
+$标签跳转 jj$
+返回
+如果尾
+如果:%括号3%==喜马拉雅
+1:$访问 http://api.ilingku.com/int/v1/dg_ximalaya?msg=%括号4%&n=&limit=20&format=json$
+$写 寻芸XY/音乐 %QQ% 喜马拉雅$
+$标签跳转 jj$
+返回
+如果尾
+如果:%括号3%==酷我
+1:$访问 https://www.hhlqilongzhu.cn/api/dg_kuwomusic.php?msg=%括号4%&n=&type=json$
+$写 寻芸XY/音乐 %QQ% 酷我$
+$标签跳转 jj$
+返回
+如果尾
+如果:%括号3%==网易云
+K:$读 龙珠API/音乐功能 key $
+1:$访问 https://sdkapi.hhlqilongzhu.cn/api/dgMusic_wyy/?key=%K%&gm=%括号4%&num=20&br=3&type=json&n=$
+$写 寻芸XY/音乐 %QQ% 网易云$
+$标签跳转 jj$
+返回
+如果尾
+如果:%括号3%==咪咕
+1:$访问 https://api.suyanw.cn/api/migu.php?msg=%括号4%&n=&sc=20$
+$写 寻芸XY/音乐 %QQ% 咪咕$
+$标签跳转 jj$
+返回
+如果尾
+如果:%括号3%==酷狗
+Y: 
+太:$替换 %括号4% %Y% $
+1:$访问 https://api.dragonlongzhu.cn/api/dg_kugouSQ.php?msg=%太%&type=json$
+$写 寻芸XY/音乐 %QQ% 酷狗$
+$标签跳转 jj$
+返回
+如果尾
+:jj
+a:%随机数10000-99999%
+b:%随机数10000-99999%
+i:0
+f:{"1":{"2":{"1":%群号%}},"2":{"1":1,"2":0,"3":0},"3":{"1":{"2":{"53":{"1":46,"2":{"1":{"1":[{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"点我重新打开音乐菜单","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"快捷音乐菜单","7":0,"8":1}}]}
+//定岗定编
+:cc
+如果:%i%>=10
+尾:%f%,{"1":{"1":"01JXBGK7NQQ5PPM4K02CN6QNH0","2":{"1":"查看我的收藏音乐","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"我的收藏","7":0,"8":1}}}]}},"3":1}}}},"4":2518%b%,"5":1713%a%}
+h:{"content-type":"application/json"}
+U:https://api.s01s.cn/API/proto/proto_en.php
+F:$访问 POST %U% %尾% %h% R$
+$新建消息 A$
+$添加消息 A Reply$
+$添加消息 A Cmd MessageSvc.PbSendMsg$
+$添加消息 A Dat %F%$
+$发送消息 A R$
+如果:$获取消息 R Dat 无$==无
+发包失败
+返回
+如果尾
+c:%R:Dat%
+返回
+如果尾
+//fge
+//fge
+如果:%括号3%==汽水
+初:@1[data][0]---@1[data][0]
+如果:%初%==@1[data][%i%][title]---@1[data][%i%][singer]
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+M:@1[data][%i%][title]---@1[data][%i%][singer]
+马:#qs#[%i%+1]#%括号4%
+f:%f%,{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"%M%","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"music%马%","7":0,"8":1}}]}
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+//fge
+//fge
+如果:%括号3%==QQ
+如果:@1[data][%i%]==
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+M:@1[data][%i%][song_title]---@1[data][%i%][song_singer]
+Y: 
+太:$替换 %括号4% %Y% $
+马:#qq#[%i%+1]#%太%
+f:%f%,{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"%M%","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"music%马%","7":0,"8":1}}]}
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+//fge
+//fge
+如果:%括号3%==喜马拉雅
+M:@1[data][%i%][title]---@1[data][%i%][nickname]「@1[data][%i%][type]」
+马:#xmly#[%i%+1]#%括号4%
+f:%f%,{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"%M%","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"music%马%","7":0,"8":1}}]}
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+//fge
+//fge
+如果:%括号3%==酷我
+初:@1[data][0]---@1[data][0]
+如果:%初%==@1[data][%i%][songname]---@1[data][%i%][singer]
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+M:@1[data][%i%][songname]---@1[data][%i%][singer]
+马:#kw#[%i%+1]#%括号4%
+f:%f%,{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"%M%","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"music%马%","7":0,"8":1}}]}
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+//fge
+//fge
+如果:%括号3%==网易云
+初:@1[data][0]---@1[data][0]
+如果:%初%==@1[data][%i%][title]---@1[data][%i%][singer]
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+M:@1[data][%i%][title]---@1[data][%i%][singer]
+马:#wyy#[%i%+1]#%括号4%
+f:%f%,{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"%M%","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"music%马%","7":0,"8":1}}]}
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+//fge
+//fge
+如果:%括号3%==咪咕
+初:@1[data][0]---@1[data][0]
+如果:%初%==@1[data][%i%][song]---@1[data][%i%][singer]
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+M:@1[data][%i%][song]---@1[data][%i%][singer]
+马:#mg#[%i%+1]#%括号4%
+f:%f%,{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"%M%","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"music%马%","7":0,"8":1}}]}
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+//fge
+//fge
+如果:%括号3%==酷狗
+初:@1[data][0]---@1[data][0]
+如果:%初%==@1[data][%i%][title]---@1[data][%i%][singer]
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+M:@1[data][%i%][title]---@1[data][%i%][singer]
+Y: 
+太:$替换 %括号4% %Y% $
+马:#kg#[%i%+1]#%太%
+f:%f%,{"1":[{"1":"01JXBGK7NMTG4ADV2BBJC37S9V","2":{"1":"%M%","2":"HDTianRu","3":0},"3":{"1":2,"2":{"1":2},"4":"err","5":"music%马%","7":0,"8":1}}]}
+i:[%i%+1]
+$标签跳转 cc$
+返回
+如果尾
+i:[%i%+1]
+$标签跳转 cc$
+//fge
+//fge
+
+
+
